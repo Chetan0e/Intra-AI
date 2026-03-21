@@ -9,7 +9,7 @@
   [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.3+-38bdf8.svg)](https://tailwindcss.com)
   [![Docker](https://img.shields.io/badge/Docker-Enabled-2496ed.svg)](https://www.docker.com)
 </div>
-
+<h2>Live url :- https://intra-ai.vercel.app/ </h2>
 ---
 
 ## 🧠 The Problem & Our Solution
