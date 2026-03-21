@@ -1,0 +1,1328 @@
+{
+  "JavaScript": {
+    "beginner": {
+      "title": "JavaScript 101: Basics",
+      "time": 4,
+      "task": "Setup and run first JavaScript project"
+    },
+    "intermediate": {
+      "title": "Applied JavaScript",
+      "time": 9,
+      "task": "Build a mid-sized JavaScript application"
+    },
+    "advanced": {
+      "title": "JavaScript Architecture & Scale",
+      "time": 16,
+      "task": "Deploy production-grade JavaScript system"
+    }
+  },
+  "Python": {
+    "beginner": {
+      "title": "Python 101: Basics",
+      "time": 4,
+      "task": "Setup and run first Python project"
+    },
+    "intermediate": {
+      "title": "Applied Python",
+      "time": 6,
+      "task": "Build a mid-sized Python application"
+    },
+    "advanced": {
+      "title": "Python Architecture & Scale",
+      "time": 10,
+      "task": "Deploy production-grade Python system"
+    }
+  },
+  "Java": {
+    "beginner": {
+      "title": "Java 101: Basics",
+      "time": 4,
+      "task": "Setup and run first Java project"
+    },
+    "intermediate": {
+      "title": "Applied Java",
+      "time": 12,
+      "task": "Build a mid-sized Java application"
+    },
+    "advanced": {
+      "title": "Java Architecture & Scale",
+      "time": 20,
+      "task": "Deploy production-grade Java system"
+    }
+  },
+  "C++": {
+    "beginner": {
+      "title": "C++ 101: Basics",
+      "time": 4,
+      "task": "Setup and run first C++ project"
+    },
+    "intermediate": {
+      "title": "Applied C++",
+      "time": 8,
+      "task": "Build a mid-sized C++ application"
+    },
+    "advanced": {
+      "title": "C++ Architecture & Scale",
+      "time": 15,
+      "task": "Deploy production-grade C++ system"
+    }
+  },
+  "C#": {
+    "beginner": {
+      "title": "C# 101: Basics",
+      "time": 6,
+      "task": "Setup and run first C# project"
+    },
+    "intermediate": {
+      "title": "Applied C#",
+      "time": 10,
+      "task": "Build a mid-sized C# application"
+    },
+    "advanced": {
+      "title": "C# Architecture & Scale",
+      "time": 13,
+      "task": "Deploy production-grade C# system"
+    }
+  },
+  "Ruby": {
+    "beginner": {
+      "title": "Ruby 101: Basics",
+      "time": 3,
+      "task": "Setup and run first Ruby project"
+    },
+    "intermediate": {
+      "title": "Applied Ruby",
+      "time": 10,
+      "task": "Build a mid-sized Ruby application"
+    },
+    "advanced": {
+      "title": "Ruby Architecture & Scale",
+      "time": 16,
+      "task": "Deploy production-grade Ruby system"
+    }
+  },
+  "Go": {
+    "beginner": {
+      "title": "Go 101: Basics",
+      "time": 5,
+      "task": "Setup and run first Go project"
+    },
+    "intermediate": {
+      "title": "Applied Go",
+      "time": 7,
+      "task": "Build a mid-sized Go application"
+    },
+    "advanced": {
+      "title": "Go Architecture & Scale",
+      "time": 12,
+      "task": "Deploy production-grade Go system"
+    }
+  },
+  "Rust": {
+    "beginner": {
+      "title": "Rust 101: Basics",
+      "time": 7,
+      "task": "Setup and run first Rust project"
+    },
+    "intermediate": {
+      "title": "Applied Rust",
+      "time": 7,
+      "task": "Build a mid-sized Rust application"
+    },
+    "advanced": {
+      "title": "Rust Architecture & Scale",
+      "time": 13,
+      "task": "Deploy production-grade Rust system"
+    }
+  },
+  "Swift": {
+    "beginner": {
+      "title": "Swift 101: Basics",
+      "time": 7,
+      "task": "Setup and run first Swift project"
+    },
+    "intermediate": {
+      "title": "Applied Swift",
+      "time": 8,
+      "task": "Build a mid-sized Swift application"
+    },
+    "advanced": {
+      "title": "Swift Architecture & Scale",
+      "time": 18,
+      "task": "Deploy production-grade Swift system"
+    }
+  },
+  "Kotlin": {
+    "beginner": {
+      "title": "Kotlin 101: Basics",
+      "time": 3,
+      "task": "Setup and run first Kotlin project"
+    },
+    "intermediate": {
+      "title": "Applied Kotlin",
+      "time": 9,
+      "task": "Build a mid-sized Kotlin application"
+    },
+    "advanced": {
+      "title": "Kotlin Architecture & Scale",
+      "time": 18,
+      "task": "Deploy production-grade Kotlin system"
+    }
+  },
+  "PHP": {
+    "beginner": {
+      "title": "PHP 101: Basics",
+      "time": 5,
+      "task": "Setup and run first PHP project"
+    },
+    "intermediate": {
+      "title": "Applied PHP",
+      "time": 8,
+      "task": "Build a mid-sized PHP application"
+    },
+    "advanced": {
+      "title": "PHP Architecture & Scale",
+      "time": 15,
+      "task": "Deploy production-grade PHP system"
+    }
+  },
+  "TypeScript": {
+    "beginner": {
+      "title": "TypeScript 101: Basics",
+      "time": 5,
+      "task": "Setup and run first TypeScript project"
+    },
+    "intermediate": {
+      "title": "Applied TypeScript",
+      "time": 11,
+      "task": "Build a mid-sized TypeScript application"
+    },
+    "advanced": {
+      "title": "TypeScript Architecture & Scale",
+      "time": 14,
+      "task": "Deploy production-grade TypeScript system"
+    }
+  },
+  "React": {
+    "beginner": {
+      "title": "React 101: Basics",
+      "time": 7,
+      "task": "Setup and run first React project"
+    },
+    "intermediate": {
+      "title": "Applied React",
+      "time": 8,
+      "task": "Build a mid-sized React application"
+    },
+    "advanced": {
+      "title": "React Architecture & Scale",
+      "time": 16,
+      "task": "Deploy production-grade React system"
+    }
+  },
+  "Angular": {
+    "beginner": {
+      "title": "Angular 101: Basics",
+      "time": 4,
+      "task": "Setup and run first Angular project"
+    },
+    "intermediate": {
+      "title": "Applied Angular",
+      "time": 10,
+      "task": "Build a mid-sized Angular application"
+    },
+    "advanced": {
+      "title": "Angular Architecture & Scale",
+      "time": 16,
+      "task": "Deploy production-grade Angular system"
+    }
+  },
+  "Vue": {
+    "beginner": {
+      "title": "Vue 101: Basics",
+      "time": 4,
+      "task": "Setup and run first Vue project"
+    },
+    "intermediate": {
+      "title": "Applied Vue",
+      "time": 7,
+      "task": "Build a mid-sized Vue application"
+    },
+    "advanced": {
+      "title": "Vue Architecture & Scale",
+      "time": 14,
+      "task": "Deploy production-grade Vue system"
+    }
+  },
+  "Next.js": {
+    "beginner": {
+      "title": "Next.js 101: Basics",
+      "time": 4,
+      "task": "Setup and run first Next.js project"
+    },
+    "intermediate": {
+      "title": "Applied Next.js",
+      "time": 10,
+      "task": "Build a mid-sized Next.js application"
+    },
+    "advanced": {
+      "title": "Next.js Architecture & Scale",
+      "time": 12,
+      "task": "Deploy production-grade Next.js system"
+    }
+  },
+  "Node.js": {
+    "beginner": {
+      "title": "Node.js 101: Basics",
+      "time": 4,
+      "task": "Setup and run first Node.js project"
+    },
+    "intermediate": {
+      "title": "Applied Node.js",
+      "time": 9,
+      "task": "Build a mid-sized Node.js application"
+    },
+    "advanced": {
+      "title": "Node.js Architecture & Scale",
+      "time": 12,
+      "task": "Deploy production-grade Node.js system"
+    }
+  },
+  "Express": {
+    "beginner": {
+      "title": "Express 101: Basics",
+      "time": 5,
+      "task": "Setup and run first Express project"
+    },
+    "intermediate": {
+      "title": "Applied Express",
+      "time": 8,
+      "task": "Build a mid-sized Express application"
+    },
+    "advanced": {
+      "title": "Express Architecture & Scale",
+      "time": 15,
+      "task": "Deploy production-grade Express system"
+    }
+  },
+  "Django": {
+    "beginner": {
+      "title": "Django 101: Basics",
+      "time": 7,
+      "task": "Setup and run first Django project"
+    },
+    "intermediate": {
+      "title": "Applied Django",
+      "time": 10,
+      "task": "Build a mid-sized Django application"
+    },
+    "advanced": {
+      "title": "Django Architecture & Scale",
+      "time": 13,
+      "task": "Deploy production-grade Django system"
+    }
+  },
+  "Flask": {
+    "beginner": {
+      "title": "Flask 101: Basics",
+      "time": 7,
+      "task": "Setup and run first Flask project"
+    },
+    "intermediate": {
+      "title": "Applied Flask",
+      "time": 12,
+      "task": "Build a mid-sized Flask application"
+    },
+    "advanced": {
+      "title": "Flask Architecture & Scale",
+      "time": 17,
+      "task": "Deploy production-grade Flask system"
+    }
+  },
+  "Spring Boot": {
+    "beginner": {
+      "title": "Spring Boot 101: Basics",
+      "time": 6,
+      "task": "Setup and run first Spring Boot project"
+    },
+    "intermediate": {
+      "title": "Applied Spring Boot",
+      "time": 6,
+      "task": "Build a mid-sized Spring Boot application"
+    },
+    "advanced": {
+      "title": "Spring Boot Architecture & Scale",
+      "time": 18,
+      "task": "Deploy production-grade Spring Boot system"
+    }
+  },
+  "Ruby on Rails": {
+    "beginner": {
+      "title": "Ruby on Rails 101: Basics",
+      "time": 7,
+      "task": "Setup and run first Ruby on Rails project"
+    },
+    "intermediate": {
+      "title": "Applied Ruby on Rails",
+      "time": 8,
+      "task": "Build a mid-sized Ruby on Rails application"
+    },
+    "advanced": {
+      "title": "Ruby on Rails Architecture & Scale",
+      "time": 16,
+      "task": "Deploy production-grade Ruby on Rails system"
+    }
+  },
+  "Laravel": {
+    "beginner": {
+      "title": "Laravel 101: Basics",
+      "time": 7,
+      "task": "Setup and run first Laravel project"
+    },
+    "intermediate": {
+      "title": "Applied Laravel",
+      "time": 10,
+      "task": "Build a mid-sized Laravel application"
+    },
+    "advanced": {
+      "title": "Laravel Architecture & Scale",
+      "time": 20,
+      "task": "Deploy production-grade Laravel system"
+    }
+  },
+  "SQL": {
+    "beginner": {
+      "title": "SQL 101: Basics",
+      "time": 4,
+      "task": "Setup and run first SQL project"
+    },
+    "intermediate": {
+      "title": "Applied SQL",
+      "time": 11,
+      "task": "Build a mid-sized SQL application"
+    },
+    "advanced": {
+      "title": "SQL Architecture & Scale",
+      "time": 17,
+      "task": "Deploy production-grade SQL system"
+    }
+  },
+  "MySQL": {
+    "beginner": {
+      "title": "MySQL 101: Basics",
+      "time": 7,
+      "task": "Setup and run first MySQL project"
+    },
+    "intermediate": {
+      "title": "Applied MySQL",
+      "time": 9,
+      "task": "Build a mid-sized MySQL application"
+    },
+    "advanced": {
+      "title": "MySQL Architecture & Scale",
+      "time": 11,
+      "task": "Deploy production-grade MySQL system"
+    }
+  },
+  "PostgreSQL": {
+    "beginner": {
+      "title": "PostgreSQL 101: Basics",
+      "time": 7,
+      "task": "Setup and run first PostgreSQL project"
+    },
+    "intermediate": {
+      "title": "Applied PostgreSQL",
+      "time": 8,
+      "task": "Build a mid-sized PostgreSQL application"
+    },
+    "advanced": {
+      "title": "PostgreSQL Architecture & Scale",
+      "time": 11,
+      "task": "Deploy production-grade PostgreSQL system"
+    }
+  },
+  "MongoDB": {
+    "beginner": {
+      "title": "MongoDB 101: Basics",
+      "time": 7,
+      "task": "Setup and run first MongoDB project"
+    },
+    "intermediate": {
+      "title": "Applied MongoDB",
+      "time": 12,
+      "task": "Build a mid-sized MongoDB application"
+    },
+    "advanced": {
+      "title": "MongoDB Architecture & Scale",
+      "time": 16,
+      "task": "Deploy production-grade MongoDB system"
+    }
+  },
+  "Redis": {
+    "beginner": {
+      "title": "Redis 101: Basics",
+      "time": 3,
+      "task": "Setup and run first Redis project"
+    },
+    "intermediate": {
+      "title": "Applied Redis",
+      "time": 9,
+      "task": "Build a mid-sized Redis application"
+    },
+    "advanced": {
+      "title": "Redis Architecture & Scale",
+      "time": 15,
+      "task": "Deploy production-grade Redis system"
+    }
+  },
+  "Elasticsearch": {
+    "beginner": {
+      "title": "Elasticsearch 101: Basics",
+      "time": 5,
+      "task": "Setup and run first Elasticsearch project"
+    },
+    "intermediate": {
+      "title": "Applied Elasticsearch",
+      "time": 12,
+      "task": "Build a mid-sized Elasticsearch application"
+    },
+    "advanced": {
+      "title": "Elasticsearch Architecture & Scale",
+      "time": 19,
+      "task": "Deploy production-grade Elasticsearch system"
+    }
+  },
+  "Cassandra": {
+    "beginner": {
+      "title": "Cassandra 101: Basics",
+      "time": 3,
+      "task": "Setup and run first Cassandra project"
+    },
+    "intermediate": {
+      "title": "Applied Cassandra",
+      "time": 11,
+      "task": "Build a mid-sized Cassandra application"
+    },
+    "advanced": {
+      "title": "Cassandra Architecture & Scale",
+      "time": 13,
+      "task": "Deploy production-grade Cassandra system"
+    }
+  },
+  "AWS": {
+    "beginner": {
+      "title": "AWS 101: Basics",
+      "time": 7,
+      "task": "Setup and run first AWS project"
+    },
+    "intermediate": {
+      "title": "Applied AWS",
+      "time": 9,
+      "task": "Build a mid-sized AWS application"
+    },
+    "advanced": {
+      "title": "AWS Architecture & Scale",
+      "time": 16,
+      "task": "Deploy production-grade AWS system"
+    }
+  },
+  "Azure": {
+    "beginner": {
+      "title": "Azure 101: Basics",
+      "time": 3,
+      "task": "Setup and run first Azure project"
+    },
+    "intermediate": {
+      "title": "Applied Azure",
+      "time": 10,
+      "task": "Build a mid-sized Azure application"
+    },
+    "advanced": {
+      "title": "Azure Architecture & Scale",
+      "time": 12,
+      "task": "Deploy production-grade Azure system"
+    }
+  },
+  "GCP": {
+    "beginner": {
+      "title": "GCP 101: Basics",
+      "time": 3,
+      "task": "Setup and run first GCP project"
+    },
+    "intermediate": {
+      "title": "Applied GCP",
+      "time": 7,
+      "task": "Build a mid-sized GCP application"
+    },
+    "advanced": {
+      "title": "GCP Architecture & Scale",
+      "time": 19,
+      "task": "Deploy production-grade GCP system"
+    }
+  },
+  "Docker": {
+    "beginner": {
+      "title": "Docker 101: Basics",
+      "time": 3,
+      "task": "Setup and run first Docker project"
+    },
+    "intermediate": {
+      "title": "Applied Docker",
+      "time": 12,
+      "task": "Build a mid-sized Docker application"
+    },
+    "advanced": {
+      "title": "Docker Architecture & Scale",
+      "time": 19,
+      "task": "Deploy production-grade Docker system"
+    }
+  },
+  "Kubernetes": {
+    "beginner": {
+      "title": "Kubernetes 101: Basics",
+      "time": 4,
+      "task": "Setup and run first Kubernetes project"
+    },
+    "intermediate": {
+      "title": "Applied Kubernetes",
+      "time": 7,
+      "task": "Build a mid-sized Kubernetes application"
+    },
+    "advanced": {
+      "title": "Kubernetes Architecture & Scale",
+      "time": 19,
+      "task": "Deploy production-grade Kubernetes system"
+    }
+  },
+  "Terraform": {
+    "beginner": {
+      "title": "Terraform 101: Basics",
+      "time": 5,
+      "task": "Setup and run first Terraform project"
+    },
+    "intermediate": {
+      "title": "Applied Terraform",
+      "time": 10,
+      "task": "Build a mid-sized Terraform application"
+    },
+    "advanced": {
+      "title": "Terraform Architecture & Scale",
+      "time": 18,
+      "task": "Deploy production-grade Terraform system"
+    }
+  },
+  "Ansible": {
+    "beginner": {
+      "title": "Ansible 101: Basics",
+      "time": 5,
+      "task": "Setup and run first Ansible project"
+    },
+    "intermediate": {
+      "title": "Applied Ansible",
+      "time": 7,
+      "task": "Build a mid-sized Ansible application"
+    },
+    "advanced": {
+      "title": "Ansible Architecture & Scale",
+      "time": 17,
+      "task": "Deploy production-grade Ansible system"
+    }
+  },
+  "Jenkins": {
+    "beginner": {
+      "title": "Jenkins 101: Basics",
+      "time": 6,
+      "task": "Setup and run first Jenkins project"
+    },
+    "intermediate": {
+      "title": "Applied Jenkins",
+      "time": 7,
+      "task": "Build a mid-sized Jenkins application"
+    },
+    "advanced": {
+      "title": "Jenkins Architecture & Scale",
+      "time": 20,
+      "task": "Deploy production-grade Jenkins system"
+    }
+  },
+  "Git": {
+    "beginner": {
+      "title": "Git 101: Basics",
+      "time": 7,
+      "task": "Setup and run first Git project"
+    },
+    "intermediate": {
+      "title": "Applied Git",
+      "time": 6,
+      "task": "Build a mid-sized Git application"
+    },
+    "advanced": {
+      "title": "Git Architecture & Scale",
+      "time": 14,
+      "task": "Deploy production-grade Git system"
+    }
+  },
+  "GitHub": {
+    "beginner": {
+      "title": "GitHub 101: Basics",
+      "time": 5,
+      "task": "Setup and run first GitHub project"
+    },
+    "intermediate": {
+      "title": "Applied GitHub",
+      "time": 12,
+      "task": "Build a mid-sized GitHub application"
+    },
+    "advanced": {
+      "title": "GitHub Architecture & Scale",
+      "time": 12,
+      "task": "Deploy production-grade GitHub system"
+    }
+  },
+  "GitLab": {
+    "beginner": {
+      "title": "GitLab 101: Basics",
+      "time": 6,
+      "task": "Setup and run first GitLab project"
+    },
+    "intermediate": {
+      "title": "Applied GitLab",
+      "time": 7,
+      "task": "Build a mid-sized GitLab application"
+    },
+    "advanced": {
+      "title": "GitLab Architecture & Scale",
+      "time": 19,
+      "task": "Deploy production-grade GitLab system"
+    }
+  },
+  "CI/CD": {
+    "beginner": {
+      "title": "CI/CD 101: Basics",
+      "time": 7,
+      "task": "Setup and run first CI/CD project"
+    },
+    "intermediate": {
+      "title": "Applied CI/CD",
+      "time": 11,
+      "task": "Build a mid-sized CI/CD application"
+    },
+    "advanced": {
+      "title": "CI/CD Architecture & Scale",
+      "time": 13,
+      "task": "Deploy production-grade CI/CD system"
+    }
+  },
+  "Machine Learning": {
+    "beginner": {
+      "title": "Machine Learning 101: Basics",
+      "time": 4,
+      "task": "Setup and run first Machine Learning project"
+    },
+    "intermediate": {
+      "title": "Applied Machine Learning",
+      "time": 7,
+      "task": "Build a mid-sized Machine Learning application"
+    },
+    "advanced": {
+      "title": "Machine Learning Architecture & Scale",
+      "time": 17,
+      "task": "Deploy production-grade Machine Learning system"
+    }
+  },
+  "Deep Learning": {
+    "beginner": {
+      "title": "Deep Learning 101: Basics",
+      "time": 4,
+      "task": "Setup and run first Deep Learning project"
+    },
+    "intermediate": {
+      "title": "Applied Deep Learning",
+      "time": 12,
+      "task": "Build a mid-sized Deep Learning application"
+    },
+    "advanced": {
+      "title": "Deep Learning Architecture & Scale",
+      "time": 11,
+      "task": "Deploy production-grade Deep Learning system"
+    }
+  },
+  "NLP": {
+    "beginner": {
+      "title": "NLP 101: Basics",
+      "time": 4,
+      "task": "Setup and run first NLP project"
+    },
+    "intermediate": {
+      "title": "Applied NLP",
+      "time": 11,
+      "task": "Build a mid-sized NLP application"
+    },
+    "advanced": {
+      "title": "NLP Architecture & Scale",
+      "time": 16,
+      "task": "Deploy production-grade NLP system"
+    }
+  },
+  "Computer Vision": {
+    "beginner": {
+      "title": "Computer Vision 101: Basics",
+      "time": 4,
+      "task": "Setup and run first Computer Vision project"
+    },
+    "intermediate": {
+      "title": "Applied Computer Vision",
+      "time": 8,
+      "task": "Build a mid-sized Computer Vision application"
+    },
+    "advanced": {
+      "title": "Computer Vision Architecture & Scale",
+      "time": 15,
+      "task": "Deploy production-grade Computer Vision system"
+    }
+  },
+  "TensorFlow": {
+    "beginner": {
+      "title": "TensorFlow 101: Basics",
+      "time": 5,
+      "task": "Setup and run first TensorFlow project"
+    },
+    "intermediate": {
+      "title": "Applied TensorFlow",
+      "time": 10,
+      "task": "Build a mid-sized TensorFlow application"
+    },
+    "advanced": {
+      "title": "TensorFlow Architecture & Scale",
+      "time": 15,
+      "task": "Deploy production-grade TensorFlow system"
+    }
+  },
+  "PyTorch": {
+    "beginner": {
+      "title": "PyTorch 101: Basics",
+      "time": 4,
+      "task": "Setup and run first PyTorch project"
+    },
+    "intermediate": {
+      "title": "Applied PyTorch",
+      "time": 10,
+      "task": "Build a mid-sized PyTorch application"
+    },
+    "advanced": {
+      "title": "PyTorch Architecture & Scale",
+      "time": 19,
+      "task": "Deploy production-grade PyTorch system"
+    }
+  },
+  "Scikit-learn": {
+    "beginner": {
+      "title": "Scikit-learn 101: Basics",
+      "time": 7,
+      "task": "Setup and run first Scikit-learn project"
+    },
+    "intermediate": {
+      "title": "Applied Scikit-learn",
+      "time": 10,
+      "task": "Build a mid-sized Scikit-learn application"
+    },
+    "advanced": {
+      "title": "Scikit-learn Architecture & Scale",
+      "time": 14,
+      "task": "Deploy production-grade Scikit-learn system"
+    }
+  },
+  "Pandas": {
+    "beginner": {
+      "title": "Pandas 101: Basics",
+      "time": 7,
+      "task": "Setup and run first Pandas project"
+    },
+    "intermediate": {
+      "title": "Applied Pandas",
+      "time": 6,
+      "task": "Build a mid-sized Pandas application"
+    },
+    "advanced": {
+      "title": "Pandas Architecture & Scale",
+      "time": 18,
+      "task": "Deploy production-grade Pandas system"
+    }
+  },
+  "NumPy": {
+    "beginner": {
+      "title": "NumPy 101: Basics",
+      "time": 6,
+      "task": "Setup and run first NumPy project"
+    },
+    "intermediate": {
+      "title": "Applied NumPy",
+      "time": 12,
+      "task": "Build a mid-sized NumPy application"
+    },
+    "advanced": {
+      "title": "NumPy Architecture & Scale",
+      "time": 16,
+      "task": "Deploy production-grade NumPy system"
+    }
+  },
+  "Matplotlib": {
+    "beginner": {
+      "title": "Matplotlib 101: Basics",
+      "time": 5,
+      "task": "Setup and run first Matplotlib project"
+    },
+    "intermediate": {
+      "title": "Applied Matplotlib",
+      "time": 12,
+      "task": "Build a mid-sized Matplotlib application"
+    },
+    "advanced": {
+      "title": "Matplotlib Architecture & Scale",
+      "time": 19,
+      "task": "Deploy production-grade Matplotlib system"
+    }
+  },
+  "Data Science": {
+    "beginner": {
+      "title": "Data Science 101: Basics",
+      "time": 3,
+      "task": "Setup and run first Data Science project"
+    },
+    "intermediate": {
+      "title": "Applied Data Science",
+      "time": 11,
+      "task": "Build a mid-sized Data Science application"
+    },
+    "advanced": {
+      "title": "Data Science Architecture & Scale",
+      "time": 20,
+      "task": "Deploy production-grade Data Science system"
+    }
+  },
+  "Data Engineering": {
+    "beginner": {
+      "title": "Data Engineering 101: Basics",
+      "time": 4,
+      "task": "Setup and run first Data Engineering project"
+    },
+    "intermediate": {
+      "title": "Applied Data Engineering",
+      "time": 7,
+      "task": "Build a mid-sized Data Engineering application"
+    },
+    "advanced": {
+      "title": "Data Engineering Architecture & Scale",
+      "time": 20,
+      "task": "Deploy production-grade Data Engineering system"
+    }
+  },
+  "Hadoop": {
+    "beginner": {
+      "title": "Hadoop 101: Basics",
+      "time": 3,
+      "task": "Setup and run first Hadoop project"
+    },
+    "intermediate": {
+      "title": "Applied Hadoop",
+      "time": 6,
+      "task": "Build a mid-sized Hadoop application"
+    },
+    "advanced": {
+      "title": "Hadoop Architecture & Scale",
+      "time": 18,
+      "task": "Deploy production-grade Hadoop system"
+    }
+  },
+  "Spark": {
+    "beginner": {
+      "title": "Spark 101: Basics",
+      "time": 3,
+      "task": "Setup and run first Spark project"
+    },
+    "intermediate": {
+      "title": "Applied Spark",
+      "time": 7,
+      "task": "Build a mid-sized Spark application"
+    },
+    "advanced": {
+      "title": "Spark Architecture & Scale",
+      "time": 20,
+      "task": "Deploy production-grade Spark system"
+    }
+  },
+  "Kafka": {
+    "beginner": {
+      "title": "Kafka 101: Basics",
+      "time": 6,
+      "task": "Setup and run first Kafka project"
+    },
+    "intermediate": {
+      "title": "Applied Kafka",
+      "time": 9,
+      "task": "Build a mid-sized Kafka application"
+    },
+    "advanced": {
+      "title": "Kafka Architecture & Scale",
+      "time": 18,
+      "task": "Deploy production-grade Kafka system"
+    }
+  },
+  "Linux": {
+    "beginner": {
+      "title": "Linux 101: Basics",
+      "time": 4,
+      "task": "Setup and run first Linux project"
+    },
+    "intermediate": {
+      "title": "Applied Linux",
+      "time": 6,
+      "task": "Build a mid-sized Linux application"
+    },
+    "advanced": {
+      "title": "Linux Architecture & Scale",
+      "time": 10,
+      "task": "Deploy production-grade Linux system"
+    }
+  },
+  "Bash": {
+    "beginner": {
+      "title": "Bash 101: Basics",
+      "time": 6,
+      "task": "Setup and run first Bash project"
+    },
+    "intermediate": {
+      "title": "Applied Bash",
+      "time": 8,
+      "task": "Build a mid-sized Bash application"
+    },
+    "advanced": {
+      "title": "Bash Architecture & Scale",
+      "time": 17,
+      "task": "Deploy production-grade Bash system"
+    }
+  },
+  "Agile": {
+    "beginner": {
+      "title": "Agile 101: Basics",
+      "time": 5,
+      "task": "Setup and run first Agile project"
+    },
+    "intermediate": {
+      "title": "Applied Agile",
+      "time": 8,
+      "task": "Build a mid-sized Agile application"
+    },
+    "advanced": {
+      "title": "Agile Architecture & Scale",
+      "time": 11,
+      "task": "Deploy production-grade Agile system"
+    }
+  },
+  "Scrum": {
+    "beginner": {
+      "title": "Scrum 101: Basics",
+      "time": 7,
+      "task": "Setup and run first Scrum project"
+    },
+    "intermediate": {
+      "title": "Applied Scrum",
+      "time": 9,
+      "task": "Build a mid-sized Scrum application"
+    },
+    "advanced": {
+      "title": "Scrum Architecture & Scale",
+      "time": 14,
+      "task": "Deploy production-grade Scrum system"
+    }
+  },
+  "REST API": {
+    "beginner": {
+      "title": "REST API 101: Basics",
+      "time": 5,
+      "task": "Setup and run first REST API project"
+    },
+    "intermediate": {
+      "title": "Applied REST API",
+      "time": 10,
+      "task": "Build a mid-sized REST API application"
+    },
+    "advanced": {
+      "title": "REST API Architecture & Scale",
+      "time": 19,
+      "task": "Deploy production-grade REST API system"
+    }
+  },
+  "GraphQL": {
+    "beginner": {
+      "title": "GraphQL 101: Basics",
+      "time": 7,
+      "task": "Setup and run first GraphQL project"
+    },
+    "intermediate": {
+      "title": "Applied GraphQL",
+      "time": 7,
+      "task": "Build a mid-sized GraphQL application"
+    },
+    "advanced": {
+      "title": "GraphQL Architecture & Scale",
+      "time": 11,
+      "task": "Deploy production-grade GraphQL system"
+    }
+  },
+  "Microservices": {
+    "beginner": {
+      "title": "Microservices 101: Basics",
+      "time": 6,
+      "task": "Setup and run first Microservices project"
+    },
+    "intermediate": {
+      "title": "Applied Microservices",
+      "time": 11,
+      "task": "Build a mid-sized Microservices application"
+    },
+    "advanced": {
+      "title": "Microservices Architecture & Scale",
+      "time": 14,
+      "task": "Deploy production-grade Microservices system"
+    }
+  },
+  "System Design": {
+    "beginner": {
+      "title": "System Design 101: Basics",
+      "time": 5,
+      "task": "Setup and run first System Design project"
+    },
+    "intermediate": {
+      "title": "Applied System Design",
+      "time": 7,
+      "task": "Build a mid-sized System Design application"
+    },
+    "advanced": {
+      "title": "System Design Architecture & Scale",
+      "time": 20,
+      "task": "Deploy production-grade System Design system"
+    }
+  },
+  "HTML": {
+    "beginner": {
+      "title": "HTML 101: Basics",
+      "time": 7,
+      "task": "Setup and run first HTML project"
+    },
+    "intermediate": {
+      "title": "Applied HTML",
+      "time": 6,
+      "task": "Build a mid-sized HTML application"
+    },
+    "advanced": {
+      "title": "HTML Architecture & Scale",
+      "time": 16,
+      "task": "Deploy production-grade HTML system"
+    }
+  },
+  "CSS": {
+    "beginner": {
+      "title": "CSS 101: Basics",
+      "time": 3,
+      "task": "Setup and run first CSS project"
+    },
+    "intermediate": {
+      "title": "Applied CSS",
+      "time": 12,
+      "task": "Build a mid-sized CSS application"
+    },
+    "advanced": {
+      "title": "CSS Architecture & Scale",
+      "time": 14,
+      "task": "Deploy production-grade CSS system"
+    }
+  },
+  "TailwindCSS": {
+    "beginner": {
+      "title": "TailwindCSS 101: Basics",
+      "time": 5,
+      "task": "Setup and run first TailwindCSS project"
+    },
+    "intermediate": {
+      "title": "Applied TailwindCSS",
+      "time": 9,
+      "task": "Build a mid-sized TailwindCSS application"
+    },
+    "advanced": {
+      "title": "TailwindCSS Architecture & Scale",
+      "time": 13,
+      "task": "Deploy production-grade TailwindCSS system"
+    }
+  },
+  "Sass": {
+    "beginner": {
+      "title": "Sass 101: Basics",
+      "time": 4,
+      "task": "Setup and run first Sass project"
+    },
+    "intermediate": {
+      "title": "Applied Sass",
+      "time": 12,
+      "task": "Build a mid-sized Sass application"
+    },
+    "advanced": {
+      "title": "Sass Architecture & Scale",
+      "time": 10,
+      "task": "Deploy production-grade Sass system"
+    }
+  },
+  "Bootstrap": {
+    "beginner": {
+      "title": "Bootstrap 101: Basics",
+      "time": 7,
+      "task": "Setup and run first Bootstrap project"
+    },
+    "intermediate": {
+      "title": "Applied Bootstrap",
+      "time": 8,
+      "task": "Build a mid-sized Bootstrap application"
+    },
+    "advanced": {
+      "title": "Bootstrap Architecture & Scale",
+      "time": 17,
+      "task": "Deploy production-grade Bootstrap system"
+    }
+  },
+  "Figma": {
+    "beginner": {
+      "title": "Figma 101: Basics",
+      "time": 6,
+      "task": "Setup and run first Figma project"
+    },
+    "intermediate": {
+      "title": "Applied Figma",
+      "time": 12,
+      "task": "Build a mid-sized Figma application"
+    },
+    "advanced": {
+      "title": "Figma Architecture & Scale",
+      "time": 14,
+      "task": "Deploy production-grade Figma system"
+    }
+  },
+  "UI/UX": {
+    "beginner": {
+      "title": "UI/UX 101: Basics",
+      "time": 6,
+      "task": "Setup and run first UI/UX project"
+    },
+    "intermediate": {
+      "title": "Applied UI/UX",
+      "time": 10,
+      "task": "Build a mid-sized UI/UX application"
+    },
+    "advanced": {
+      "title": "UI/UX Architecture & Scale",
+      "time": 20,
+      "task": "Deploy production-grade UI/UX system"
+    }
+  },
+  "SEO": {
+    "beginner": {
+      "title": "SEO 101: Basics",
+      "time": 3,
+      "task": "Setup and run first SEO project"
+    },
+    "intermediate": {
+      "title": "Applied SEO",
+      "time": 10,
+      "task": "Build a mid-sized SEO application"
+    },
+    "advanced": {
+      "title": "SEO Architecture & Scale",
+      "time": 20,
+      "task": "Deploy production-grade SEO system"
+    }
+  },
+  "Google Analytics": {
+    "beginner": {
+      "title": "Google Analytics 101: Basics",
+      "time": 7,
+      "task": "Setup and run first Google Analytics project"
+    },
+    "intermediate": {
+      "title": "Applied Google Analytics",
+      "time": 8,
+      "task": "Build a mid-sized Google Analytics application"
+    },
+    "advanced": {
+      "title": "Google Analytics Architecture & Scale",
+      "time": 17,
+      "task": "Deploy production-grade Google Analytics system"
+    }
+  },
+  "Firebase": {
+    "beginner": {
+      "title": "Firebase 101: Basics",
+      "time": 7,
+      "task": "Setup and run first Firebase project"
+    },
+    "intermediate": {
+      "title": "Applied Firebase",
+      "time": 10,
+      "task": "Build a mid-sized Firebase application"
+    },
+    "advanced": {
+      "title": "Firebase Architecture & Scale",
+      "time": 12,
+      "task": "Deploy production-grade Firebase system"
+    }
+  },
+  "Supabase": {
+    "beginner": {
+      "title": "Supabase 101: Basics",
+      "time": 6,
+      "task": "Setup and run first Supabase project"
+    },
+    "intermediate": {
+      "title": "Applied Supabase",
+      "time": 12,
+      "task": "Build a mid-sized Supabase application"
+    },
+    "advanced": {
+      "title": "Supabase Architecture & Scale",
+      "time": 18,
+      "task": "Deploy production-grade Supabase system"
+    }
+  },
+  "Tableau": {
+    "beginner": {
+      "title": "Tableau 101: Basics",
+      "time": 4,
+      "task": "Setup and run first Tableau project"
+    },
+    "intermediate": {
+      "title": "Applied Tableau",
+      "time": 12,
+      "task": "Build a mid-sized Tableau application"
+    },
+    "advanced": {
+      "title": "Tableau Architecture & Scale",
+      "time": 18,
+      "task": "Deploy production-grade Tableau system"
+    }
+  },
+  "Power BI": {
+    "beginner": {
+      "title": "Power BI 101: Basics",
+      "time": 7,
+      "task": "Setup and run first Power BI project"
+    },
+    "intermediate": {
+      "title": "Applied Power BI",
+      "time": 11,
+      "task": "Build a mid-sized Power BI application"
+    },
+    "advanced": {
+      "title": "Power BI Architecture & Scale",
+      "time": 19,
+      "task": "Deploy production-grade Power BI system"
+    }
+  }
+}

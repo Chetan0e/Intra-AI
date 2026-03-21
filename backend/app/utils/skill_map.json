@@ -1,0 +1,179 @@
+{
+  "JavaScript": [],
+  "Python": [],
+  "Java": [],
+  "C++": [],
+  "C#": [],
+  "Ruby": [],
+  "Go": [],
+  "Rust": [],
+  "Swift": [],
+  "Kotlin": [],
+  "PHP": [],
+  "TypeScript": [
+    "JavaScript"
+  ],
+  "React": [
+    "JavaScript",
+    "HTML",
+    "CSS"
+  ],
+  "Angular": [
+    "TypeScript",
+    "HTML",
+    "CSS"
+  ],
+  "Vue": [
+    "JavaScript",
+    "HTML",
+    "CSS"
+  ],
+  "Next.js": [
+    "React",
+    "TypeScript",
+    "Node.js"
+  ],
+  "Node.js": [
+    "JavaScript"
+  ],
+  "Express": [
+    "Node.js"
+  ],
+  "Django": [
+    "Python",
+    "SQL"
+  ],
+  "Flask": [
+    "Python"
+  ],
+  "Spring Boot": [
+    "Java"
+  ],
+  "Ruby on Rails": [
+    "Ruby",
+    "SQL"
+  ],
+  "Laravel": [
+    "PHP",
+    "SQL"
+  ],
+  "SQL": [],
+  "MySQL": [],
+  "PostgreSQL": [],
+  "MongoDB": [],
+  "Redis": [],
+  "Elasticsearch": [],
+  "Cassandra": [],
+  "AWS": [],
+  "Azure": [],
+  "GCP": [],
+  "Docker": [
+    "Linux"
+  ],
+  "Kubernetes": [
+    "Docker",
+    "Linux"
+  ],
+  "Terraform": [
+    "AWS",
+    "Azure",
+    "GCP"
+  ],
+  "Ansible": [
+    "Linux",
+    "Bash"
+  ],
+  "Jenkins": [],
+  "Git": [],
+  "GitHub": [],
+  "GitLab": [],
+  "CI/CD": [
+    "Git"
+  ],
+  "Machine Learning": [
+    "Python",
+    "NumPy",
+    "Pandas",
+    "Scikit-learn"
+  ],
+  "Deep Learning": [
+    "Machine Learning",
+    "TensorFlow",
+    "PyTorch"
+  ],
+  "NLP": [
+    "Deep Learning",
+    "Python"
+  ],
+  "Computer Vision": [
+    "Deep Learning"
+  ],
+  "TensorFlow": [],
+  "PyTorch": [],
+  "Scikit-learn": [],
+  "Pandas": [],
+  "NumPy": [],
+  "Matplotlib": [],
+  "Data Science": [
+    "Python",
+    "SQL",
+    "Pandas"
+  ],
+  "Data Engineering": [
+    "SQL",
+    "Python",
+    "Spark",
+    "Kafka"
+  ],
+  "Hadoop": [],
+  "Spark": [],
+  "Kafka": [],
+  "Linux": [],
+  "Bash": [],
+  "Agile": [],
+  "Scrum": [],
+  "REST API": [],
+  "GraphQL": [
+    "REST API",
+    "Node.js"
+  ],
+  "Microservices": [
+    "System Design",
+    "Docker",
+    "REST API"
+  ],
+  "System Design": [],
+  "HTML": [],
+  "CSS": [],
+  "TailwindCSS": [
+    "CSS",
+    "HTML"
+  ],
+  "Sass": [
+    "CSS"
+  ],
+  "Bootstrap": [
+    "CSS",
+    "HTML"
+  ],
+  "Figma": [],
+  "UI/UX": [],
+  "SEO": [],
+  "Google Analytics": [],
+  "Firebase": [
+    "JavaScript",
+    "NoSQL"
+  ],
+  "Supabase": [
+    "PostgreSQL",
+    "JavaScript"
+  ],
+  "Tableau": [
+    "SQL",
+    "Data Science"
+  ],
+  "Power BI": [
+    "SQL",
+    "Data Science"
+  ]
+}

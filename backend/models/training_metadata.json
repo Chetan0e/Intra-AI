@@ -1,0 +1,37 @@
+{
+  "training_data_size": {
+    "resumes": 50,
+    "job_descriptions": 2327
+  },
+  "model_performance": {
+    "skill_accuracy": 0.9852941176470589,
+    "importance_accuracy": 0.8928571428571429
+  },
+  "known_skills": [
+    "Active Learning",
+    "Active Listening",
+    "Complex Problem Solving",
+    "Coordination",
+    "Critical Thinking",
+    "Equipment Maintenance",
+    "Equipment Selection",
+    "Installation",
+    "Instructing",
+    "Learning Strategies",
+    "Mathematics",
+    "Monitoring",
+    "Negotiation",
+    "Operation and Control",
+    "Operations Analysis",
+    "Operations Monitoring",
+    "Persuasion",
+    "Programming",
+    "Reading Comprehension",
+    "Science",
+    "Service Orientation",
+    "Social Perceptiveness",
+    "Speaking",
+    "Technology Design",
+    "Writing"
+  ]
+}

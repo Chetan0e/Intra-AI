@@ -1,0 +1,13 @@
+node_modules/
+__pycache__/
+*.pkl
+*.env
+.env
+.next/
+backend/data/
+backend/models/*.pkl
+*.csv
+*.xlsx
+.venv/
+venv/
+*.DS_Store
