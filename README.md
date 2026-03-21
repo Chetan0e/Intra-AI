@@ -40,17 +40,17 @@ Traditional onboarding systems and learning management systems (LMS) rely on sta
 
 ```mermaid
 graph TD
-    A[Candidate Resume] --> C[FastAPI Gateway]
-    B[Job Description] --> C
-    C --> D{Model Pipeline}
-    D -->|Primary| E[Custom ML Skill Extractor]
-    D -->|Fallback| F[OpenAI Integration Engine]
-    E --> G[Gap Intelligence Analyzer]
+    A["Candidate Resume"] --> C["FastAPI Gateway"]
+    B["Job Description"] --> C
+    C --> D{"Model Pipeline"}
+    D -->|Primary| E["Custom ML Skill Extractor"]
+    D -->|Fallback| F["OpenAI Integration Engine"]
+    E --> G["Gap Intelligence Analyzer"]
     F --> G
-    G --> H[Graph Dependency Resolver]
-    H --> I[Adaptive Roadmap Generator]
-    I --> J[Explainability Engine (XAI)]
-    J --> K[Next.js Premium Client Dashboard]
+    G --> H["Graph Dependency Resolver"]
+    H --> I["Adaptive Roadmap Generator"]
+    I --> J["Explainability Engine (XAI)"]
+    J --> K["Next.js Premium Client Dashboard"]
 ```
 
 ---
