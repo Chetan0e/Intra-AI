@@ -1,241 +1,232 @@
+import React from 'react';
+import dynamic from 'next/dynamic';
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, AlertCircle, BookOpen, Clock, Hexagon, LineChart, ArrowLeft, TrendingUp } from "lucide-react";
-import SkillRadar from "./SkillRadar";
+import { 
+  CheckCircle2, 
+  AlertCircle, 
+  BookOpen, 
+  Clock, 
+  Hexagon, 
+  ArrowLeft, 
+  TrendingUp,
+  Layout
+} from "lucide-react";
 
-function CircleProgress({ percentage, size = 90, strokeWidth = 8, color = "#6366f1" }) {
+// SSR-safe dynamic import for SkillRadar
+const SkillRadar = dynamic(() => import("./SkillRadar"), { 
+  ssr: false,
+  loading: () => <div className="h-64 w-full animate-pulse bg-slate-50 rounded-2xl" />
+});
+
+function CircleProgress({ percentage, size = 95, strokeWidth = 8 }) {
   const radius = (size - strokeWidth) / 2;
   const circumference = radius * 2 * Math.PI;
   const strokeDashoffset = circumference - (percentage / 100) * circumference;
+  
   return (
     <div className="relative" style={{ width: size, height: size }}>
       <svg width={size} height={size} className="-rotate-90">
-        <circle cx={size/2} cy={size/2} r={radius} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth={strokeWidth} />
+        <circle 
+          cx={size / 2} cy={size / 2} r={radius} 
+          fill="none" stroke="rgba(0,0,0,0.04)" strokeWidth={strokeWidth} 
+        />
         <motion.circle
-          cx={size/2} cy={size/2} r={radius} fill="none"
-          stroke={`url(#scoreGrad)`} strokeWidth={strokeWidth} strokeLinecap="round"
+          cx={size / 2} cy={size / 2} r={radius} fill="none"
+          stroke="url(#scoreGradUnified)" strokeWidth={strokeWidth} strokeLinecap="round"
           strokeDasharray={circumference}
           initial={{ strokeDashoffset: circumference }}
           animate={{ strokeDashoffset }}
-          transition={{ duration: 1.4, ease: "easeOut", delay: 0.3 }}
+          transition={{ duration: 1.5, ease: "circOut", delay: 0.2 }}
         />
         <defs>
-          <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <linearGradient id="scoreGradUnified" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#6366f1" />
             <stop offset="100%" stopColor="#a855f7" />
           </linearGradient>
         </defs>
       </svg>
       <div className="absolute inset-0 flex items-center justify-center flex-col">
-        <span className="text-slate-900 font-bold text-lg leading-none">{percentage}%</span>
-        <span className="text-slate-400 text-[9px] mt-0.5 font-medium">MATCH</span>
+        <span className="text-slate-900 font-extrabold text-xl tracking-tight">{Math.round(percentage)}%</span>
+        <span className="text-slate-400 text-[8px] font-bold uppercase tracking-widest mt-0.5">Match</span>
       </div>
     </div>
   );
 }
 
 export default function ResultsDashboard({ data, onReset }) {
+  if (!data) return null;
+
+  const analysis = data.analysis || {};
+  const readiness = analysis.job_readiness_label || "Analyzing...";
+  
+  const getReadinessStyles = (label) => {
+    if (label === "Highly Qualified") return "text-emerald-600 bg-emerald-50 border-emerald-100";
+    if (label === "Good Fit")         return "text-indigo-600 bg-indigo-50 border-indigo-100";
+    if (label === "Partially Qualified") return "text-amber-600 bg-amber-50 border-amber-100";
+    return "text-rose-600 bg-rose-50 border-rose-100";
+  };
+
   return (
-    <AnimatePresence>
-      {data && (
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="max-w-7xl mx-auto px-6 pb-24"
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="max-w-7xl mx-auto px-6 pb-24"
+    >
+      {/* Universal Header */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+        <div>
+          <div className="flex items-center gap-2 mb-1.5">
+            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest">Intelligence Report Live</span>
+          </div>
+          <h2 className="text-3xl font-black text-slate-900 tracking-tight">Adaptive Career Roadmap</h2>
+        </div>
+        <button
+          onClick={onReset}
+          className="group flex items-center gap-2 px-6 py-3 rounded-2xl bg-white border border-slate-200 text-slate-600 hover:text-indigo-600 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300 font-bold text-sm"
         >
-          {/* Top bar */}
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <div className="w-2 h-2 rounded-full bg-emerald-400 pulse-dot" />
-                <span className="text-xs font-semibold text-emerald-600 tracking-wide">Analysis Complete</span>
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+          Analyze New Role
+        </button>
+      </div>
+
+      {/* Snapshot Bar */}
+      <div className="flex flex-wrap gap-3 mb-8">
+        <span className={`px-4 py-2 rounded-xl border text-[11px] font-black uppercase tracking-wider ${getReadinessStyles(readiness)}`}>
+          {readiness}
+        </span>
+        <div className="px-4 py-2 rounded-xl bg-white border border-slate-200 flex items-center gap-2 text-[11px] font-bold text-slate-600">
+           <Hexagon className="w-3.5 h-3.5 text-indigo-500" />
+           {analysis.resume_skills_count || 0} Domain Skills Detected
+        </div>
+        {analysis.years_experience > 0 && (
+          <div className="px-4 py-2 rounded-xl bg-white border border-slate-200 flex items-center gap-2 text-[11px] font-bold text-slate-600">
+            <Clock className="w-3.5 h-3.5 text-orange-500" />
+            {analysis.years_experience}+ Years Professional Experience
+          </div>
+        )}
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        {/* Profile Signal (Left) */}
+        <div className="lg:col-span-4 space-y-6">
+          <div className="glass-card rounded-3xl p-8 border border-white shadow-2xl shadow-slate-200/50">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-2 bg-indigo-50 rounded-lg">
+                 <TrendingUp className="w-4 h-4 text-indigo-600" />
               </div>
-              <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Your Adaptive Intelligence Report</h2>
+              <h3 className="font-bold text-slate-900 uppercase tracking-tight text-xs">Skill DNA Signature</h3>
             </div>
-            <button
-              id="reset-btn"
-              onClick={onReset}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-200 transition-all duration-200 text-sm font-medium"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              New Analysis
-            </button>
+            
+            <div className="flex items-center gap-8 mb-8">
+              <CircleProgress percentage={data.overall_score} />
+              <div>
+                <div className="text-3xl font-black text-slate-900">{data.overall_score}%</div>
+                <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Aggregated Fit Score</div>
+              </div>
+            </div>
+
+            <SkillRadar data={data.skill_dna} />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="bg-white rounded-3xl p-8 border border-slate-100">
+             <div className="flex items-center gap-3 mb-6">
+                <Layout className="w-4 h-4 text-slate-400" />
+                <h3 className="font-bold text-slate-900 uppercase tracking-tight text-xs">Gap Intelligence</h3>
+             </div>
+             <div className="space-y-3">
+                {data.gap?.slice(0, 10).map((g, i) => (
+                  <div key={i} className="flex items-center justify-between p-4 rounded-2xl bg-slate-50/50 border border-slate-100 group hover:border-indigo-100 transition-colors">
+                     <span className="text-sm font-bold text-slate-700">{g.skill}</span>
+                     <span className={`text-[9px] font-black uppercase px-2.5 py-1 rounded-lg ${
+                       g.status === 'missing' ? 'text-rose-600 bg-rose-50' : 
+                       g.status === 'weak' ? 'text-orange-600 bg-orange-50' : 'text-emerald-600 bg-emerald-50'
+                     }`}>
+                       {g.status}
+                     </span>
+                  </div>
+                ))}
+             </div>
+          </div>
+        </div>
 
-            {/* LEFT: Score + DNA + Gaps */}
-            <div className="lg:col-span-1 space-y-5">
-
-              {/* Score Card */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4 }}
-                className="glass-card rounded-2xl p-6 relative overflow-hidden"
-              >
-                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
-                <div className="flex items-center gap-3 mb-5 pb-4 border-b border-slate-200">
-                  <TrendingUp className="w-4 h-4 text-slate-600" />
-                  <h3 className="text-sm font-semibold text-slate-900">Skill Match Score</h3>
-                </div>
-                <div className="flex items-center gap-5">
-                  <CircleProgress percentage={data.overall_score || 0} />
-                  <div>
-                    <p className="text-3xl font-bold text-slate-900">{data.overall_score || 0}<span className="text-lg text-slate-500">%</span></p>
-                    <p className="text-xs text-slate-500 mt-1">Job Readiness Index</p>
-                    {data.time_saved && (
-                      <div className="mt-2 flex items-center gap-1.5 text-[11px] text-emerald-600">
-                        <Clock className="w-3 h-3" />
-                        {data.time_saved}% est. time saved
+        {/* Adaptive Roadmap (Right) */}
+        <div className="lg:col-span-8 space-y-6">
+           <div className="bg-slate-900 rounded-[2.5rem] p-10 text-white relative overflow-hidden shadow-2xl shadow-indigo-900/20">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 blur-[100px] rounded-full" />
+              <div className="relative z-10">
+                 <div className="flex items-center justify-between mb-12">
+                    <div>
+                       <h3 className="text-2xl font-black mb-2 italic">Skill Weaver Roadmap 2.0</h3>
+                       <p className="text-slate-400 text-sm font-medium">Graph-optimized adaptive learning sequence</p>
+                    </div>
+                    {data.time_saved > 0 && (
+                      <div className="bg-white/10 backdrop-blur-xl border border-white/10 px-6 py-3 rounded-2xl">
+                         <div className="text-emerald-400 text-lg font-black">{data.time_saved}%</div>
+                         <div className="text-[8px] font-bold uppercase tracking-widest text-white/50">Time Optimization</div>
                       </div>
                     )}
-                  </div>
-                </div>
-                {data.skill_dna && (
-                  <div className="mt-5">
-                    <SkillRadar data={data.skill_dna} />
-                  </div>
-                )}
-              </motion.div>
+                 </div>
 
-              {/* Gap Intelligence */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.1 }}
-                className="glass-card rounded-2xl p-6"
-              >
-                <div className="flex items-center gap-3 mb-5 pb-4 border-b border-slate-200">
-                  <AlertCircle className="w-4 h-4 text-slate-600" />
-                  <h3 className="text-sm font-semibold text-slate-900">Gap Intelligence</h3>
-                </div>
-                <div className="space-y-2.5">
-                  {data.gap.map((g, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.07 + 0.2 }}
-                      className="flex justify-between items-center p-3 rounded-xl bg-white border border-slate-200 hover:border-slate-200 transition-colors"
-                    >
-                      <span className="font-medium text-sm text-slate-800">{g.skill}</span>
-                      <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold border ${
-                        g.status === 'missing' ? 'bg-red-500/10 text-red-600 border-red-500/30' :
-                        g.status === 'weak' ? 'bg-orange-500/10 text-orange-600 border-orange-500/30' :
-                        g.status === 'moderate' ? 'bg-yellow-500/10 text-yellow-600 border-yellow-500/30' :
-                        'bg-emerald-500/10 text-emerald-600 border-emerald-500/30'
-                      }`}>
-                        {g.status}
-                      </span>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-
-            {/* RIGHT: Roadmap + Explainer */}
-            <div className="lg:col-span-2 space-y-5">
-
-              {/* Roadmap */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.2 }}
-                className="glass-card rounded-2xl p-8 relative overflow-hidden"
-              >
-                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-purple-500/40 to-transparent" />
-
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 pb-5 border-b border-slate-200">
-                  <div>
-                    <div className="flex items-center gap-3 mb-1">
-                      <BookOpen className="w-4 h-4 text-slate-600" />
-                      <h3 className="text-lg font-bold text-slate-900 tracking-tight">Adaptive Roadmap</h3>
-                    </div>
-                    <p className="text-slate-500 text-xs">Graph-optimized personalized learning path</p>
-                  </div>
-                  {data.time_saved && (
-                    <div className="flex items-center gap-2 text-slate-700 text-xs font-semibold bg-white px-4 py-2 rounded-xl border border-slate-200">
-                      <Clock className="w-3.5 h-3.5 text-emerald-600" />
-                      {data.time_saved}% Estimated Time Saved
-                    </div>
-                  )}
-                </div>
-
-                <div className="relative border-l border-slate-800 ml-4 space-y-7 pb-2">
-                  {data.roadmap.map((step, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.1 + 0.3, duration: 0.4 }}
-                      className="relative pl-8 group"
-                    >
-                      {/* Timeline node */}
-                      <div className="absolute w-3 h-3 rounded-full -left-[6px] top-5 border-2 border-emerald-500/50 bg-slate-50 group-hover:border-emerald-400 group-hover:scale-125 transition-all duration-300" />
-
-                      <div className="glass-panel rounded-2xl p-5 border border-slate-200 group-hover:border-slate-200 transition-all duration-300">
-                        <div className="flex justify-between items-start flex-wrap gap-3 mb-3">
-                          <h4 className="text-base font-bold text-slate-900">{step.skill}</h4>
-                          <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-white text-slate-600 border border-slate-200 uppercase tracking-widest">
-                            {step.level}
-                          </span>
-                        </div>
-                        {step.course?.title && (
-                          <div className="text-slate-700 font-semibold text-sm mb-3 flex items-center gap-2">
-                            <BookOpen className="w-3.5 h-3.5 text-emerald-600" />
-                            {step.course.title}
-                          </div>
-                        )}
-                        {step.course?.task && (
-                          <div className="text-slate-600 text-xs flex items-start gap-2 leading-relaxed bg-white p-3 rounded-xl border border-slate-200">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mt-0.5 shrink-0" />
-                            <span>{step.course.task}</span>
-                          </div>
-                        )}
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* AI Reasoning */}
-              {data.reasoning && data.reasoning.length > 0 && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.3 }}
-                  className="glass-card rounded-2xl p-8"
-                >
-                  <div className="flex items-center gap-2 mb-6 pb-4 border-b border-slate-200">
-                    <Hexagon className="w-4 h-4 text-emerald-600" />
-                    <h3 className="text-xs font-bold uppercase tracking-widest text-slate-500">Explainable AI — Decision Trace</h3>
-                  </div>
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    {data.reasoning.slice(0, 4).map((r, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: i * 0.08 + 0.4 }}
-                        className="bg-white border border-slate-200 p-4 rounded-xl hover:border-slate-200 transition-colors"
+                 <div className="space-y-6">
+                    {data.roadmap?.map((step, i) => (
+                      <motion.div 
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.1 }}
+                        key={i} 
+                        className="flex gap-6 group"
                       >
-                        <p className="font-bold text-slate-900 text-sm mb-2">{r.skill}</p>
-                        <p className="text-slate-500 text-xs leading-relaxed mb-3">{r.reason}</p>
-                        <span className="text-slate-700 text-[11px] flex items-center gap-1.5 bg-white w-fit px-2.5 py-1 rounded-lg border border-slate-200 font-medium">
-                          <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                          {r.action}
-                        </span>
+                         <div className="flex flex-col items-center">
+                            <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-xs font-black group-hover:bg-indigo-500 group-hover:border-indigo-400 transition-all">
+                               {i + 1}
+                            </div>
+                            <div className="w-[1px] h-full bg-white/10 mt-2" />
+                         </div>
+                         <div className="flex-1 pb-8">
+                            <div className="bg-white/5 border border-white/5 rounded-3xl p-6 hover:bg-white/[0.08] transition-all">
+                               <div className="flex justify-between items-start mb-4">
+                                  <h4 className="text-lg font-bold text-white tracking-tight">{step.skill}</h4>
+                                  <span className="text-[9px] font-black uppercase px-2.5 py-1 rounded-lg bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                                    {step.level}
+                                  </span>
+                               </div>
+                               <div className="flex items-center gap-3 text-slate-400 text-xs mb-4">
+                                  <BookOpen className="w-3.5 h-3.5 text-indigo-400" />
+                                  {step.course?.title || "Specialized Lab"}
+                               </div>
+                               <div className="bg-black/20 rounded-2xl p-4 flex gap-3">
+                                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                                  <p className="text-xs text-slate-300 leading-relaxed font-medium">
+                                    {step.course?.task}
+                                  </p>
+                               </div>
+                            </div>
+                         </div>
                       </motion.div>
                     ))}
-                  </div>
-                </motion.div>
-              )}
-            </div>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+                 </div>
+              </div>
+           </div>
+
+           {/* AI reasoning cards */}
+           <div className="grid md:grid-cols-2 gap-6">
+              {data.reasoning?.slice(0, 4).map((r, i) => (
+                <div key={i} className="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm">
+                   <div className="flex items-center gap-2 mb-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+                      <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest">AI Logic Check</span>
+                   </div>
+                   <h4 className="font-black text-slate-900 mb-2">{r.skill}</h4>
+                   <p className="text-[11px] text-slate-500 leading-relaxed mb-4">{r.reason}</p>
+                   <div className="text-[10px] font-bold text-indigo-600 bg-indigo-50 inline-block px-3 py-1.5 rounded-lg border border-indigo-100">
+                      Strategy: {r.action}
+                   </div>
+                </div>
+              ))}
+           </div>
+        </div>
+      </div>
+    </motion.div>
   );
 }

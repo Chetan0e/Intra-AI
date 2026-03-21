@@ -31,35 +31,48 @@ export default function Home() {
     setLoading(true);
     setData(null);
     try {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
+      // Step 1 — Upload (handles PDF, DOCX, TXT)
       const formData = new FormData();
       formData.append("resume", resume);
       formData.append("jd", jd);
+      const uploadRes = await axios.post(`${API_URL}/upload`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
 
-      const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+      const { resume: resumeText, jd: jdText } = uploadRes.data;
 
-      const uploadRes = await axios.post(`${API_URL}/upload`, formData);
+      if (!resumeText || !jdText) {
+        alert("Could not extract text from uploaded files. Please ensure files contain readable text.");
+        setLoading(false);
+        return;
+      }
+
+      // Step 2 — Unified analysis (skills + gap + roadmap + reasoning)
       const analysisRes = await axios.post(`${API_URL}/analyze`, {
-        resume: uploadRes.data.resume,
-        jd: uploadRes.data.jd,
+        resume: resumeText,
+        jd: jdText,
       });
-      const roadmapRes = await axios.post(`${API_URL}/roadmap`, {
-        gap: analysisRes.data.gap,
-      });
+
+      const d = analysisRes.data;
 
       setData({
-        gap: analysisRes.data.gap,
-        skill_dna: analysisRes.data.skill_dna,
-        overall_score: analysisRes.data.overall_score,
-        roadmap: roadmapRes.data.roadmap,
-        time_saved: roadmapRes.data.time_saved,
-        reasoning: roadmapRes.data.reasoning,
+        gap:           d.gap           || [],
+        skill_dna:     d.skill_dna     || {},
+        overall_score: d.overall_score || 0,
+        roadmap:       d.roadmap       || [],
+        time_saved:    d.time_saved    || 0,
+        reasoning:     d.reasoning     || [],
+        analysis:      d.analysis      || {},
       });
 
-      // Scroll to results
+      // Scroll to top to show results
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (err) {
-      console.error(err);
-      alert("Error analyzing documents. Ensure the backend is running on port 8000.");
+      console.error("[Upload/Analyze Error]", err);
+      const detail = err?.response?.data?.detail || "Unknown error";
+      alert(`Analysis failed: ${detail}\n\nEnsure the backend is running on port 8000.`);
     } finally {
       setLoading(false);
     }
