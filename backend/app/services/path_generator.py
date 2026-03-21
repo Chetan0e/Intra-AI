@@ -104,6 +104,8 @@ def generate_advanced_path(gap):
             if status == "missing":
                 level = "beginner"
             elif status == "weak":
+                level = "foundation"
+            elif status == "moderate":
                 level = "intermediate"
             
             course_data = courses.get(skill, {}).get(level, {})

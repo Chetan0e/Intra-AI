@@ -60,7 +60,7 @@ def full_analyze(data: AnalysisRequest):
                 "missing_skills":       gap_result["missing"],
                 "weak_skills":          gap_result["weak"],
                 "strong_count":         gap_result["strong_count"],
-                "job_readiness_label":  _readiness_label(gap_result["overall_score"]),
+                "job_readiness_label":  _readiness_label(gap_result),
                 "engine_mode":          _engine_mode(skill_dna, jd_skills),
             }
         }
@@ -69,10 +69,26 @@ def full_analyze(data: AnalysisRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-def _readiness_label(score: int) -> str:
-    if score >= 80: return "Highly Qualified"
-    if score >= 60: return "Good Fit"
-    if score >= 40: return "Partially Qualified"
+def _readiness_label(gap_result: dict) -> str:
+    score = int(gap_result.get("overall_score", 0))
+    total_required = int(gap_result.get("total_required", 0)) or 1
+    missing_count = len(gap_result.get("missing", []))
+    weak_count = len(gap_result.get("weak", []))
+    matched_count = len(gap_result.get("matched", []))
+    matched_ratio = matched_count / total_required
+
+    # Rule override for practical hiring interpretation:
+    # if almost everything is matched and there are no hard misses,
+    # this should not be labeled as "Partially Qualified".
+    if missing_count == 0 and weak_count <= 1 and matched_ratio >= 0.7:
+        return "Good Fit"
+
+    if score >= 80:
+        return "Highly Qualified"
+    if score >= 55:
+        return "Good Fit"
+    if score >= 35:
+        return "Partially Qualified"
     return "Significant Gap"
 
 def _engine_mode(skill_dna: dict, jd_skills: dict) -> str:
