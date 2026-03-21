@@ -2,11 +2,14 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.routes import upload, analysis, roadmap, training
-from app.routes.upload_fallback import router as fallback_router
 
-app = FastAPI()
+app = FastAPI(
+    title="Intra AI — Adaptive Workforce Intelligence Engine",
+    description="Resume ↔ JD skill matching, gap analysis, and adaptive learning roadmap generation.",
+    version="2.0.0",
+)
 
-# Allow CORS for the frontend
+# CORS — allow the Next.js frontend
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -15,18 +18,28 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(upload.router, prefix="/api", tags=["upload"])
-app.include_router(analysis.router, prefix="/api", tags=["analysis"])
-app.include_router(roadmap.router, prefix="/api", tags=["roadmap"])
-app.include_router(training.router, prefix="/api", tags=["training"])
+# All routes under /api prefix
+app.include_router(upload.router,   prefix="/api", tags=["Upload"])
+app.include_router(analysis.router, prefix="/api", tags=["Analysis"])
+app.include_router(roadmap.router,  prefix="/api", tags=["Roadmap"])
+app.include_router(training.router, prefix="/api", tags=["Training"])
 
-# Add fallback routes without /api prefix
-app.include_router(upload.router, tags=["upload"])
-app.include_router(analysis.router, tags=["analysis"])
-app.include_router(roadmap.router, tags=["roadmap"])
-app.include_router(training.router, tags=["training"])
-app.include_router(fallback_router, tags=["fallback"])
+# Also mount at root (frontend calls /upload, /analyze etc. without /api prefix)
+app.include_router(upload.router,   tags=["Upload"])
+app.include_router(analysis.router, tags=["Analysis"])
+app.include_router(roadmap.router,  tags=["Roadmap"])
+app.include_router(training.router, tags=["Training"])
+
 
 @app.get("/")
 def read_root():
-    return {"message": "Intra Ai Inference Engine running 🚀"}
+    return {
+        "message": "Intra AI Inference Engine running 🚀",
+        "version": "2.0.0",
+        "endpoints": ["/upload", "/analyze", "/roadmap", "/api/upload", "/api/analyze", "/api/roadmap"],
+    }
+
+
+@app.get("/health")
+def health_check():
+    return {"status": "healthy"}
