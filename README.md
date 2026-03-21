@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>🚀 Intra Ai</h1>
+  <h1> Intra Ai</h1>
   <p><strong>Adaptive Workforce Intelligence Engine</strong></p>
   <p><i>Transforming static resumes and standard job descriptions into deeply personalized, dynamic upskilling roadmaps.</i></p>
 
