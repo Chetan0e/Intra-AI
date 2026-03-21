@@ -84,6 +84,17 @@ const JOB_ROLES = {
   ],
 };
 
+const ROLE_TEMPLATES = {
+  "Software Engineer": "Software Engineer role requiring Python, JavaScript, SQL, Git, REST API design, data structures, algorithms, testing, and cloud deployment on AWS. Must build scalable backend services, optimize performance, collaborate cross-functionally, and ship production-grade features.",
+  "Frontend Developer": "Frontend Developer role requiring React, JavaScript, TypeScript, HTML, CSS, responsive design, API integration, and testing with Jest. Must build reusable UI components, improve web performance, and collaborate with product and design teams.",
+  "Backend Developer": "Backend Developer role requiring Python or Node.js, FastAPI or Express, SQL and PostgreSQL, API design, authentication, Docker, and cloud deployment. Must architect reliable services, improve latency, write tests, and maintain production systems.",
+  "Full Stack Developer": "Full Stack Developer role requiring React, TypeScript, Node.js, API integration, SQL, cloud deployment, Docker, and CI/CD. Must deliver end-to-end features, optimize frontend and backend performance, and maintain code quality.",
+  "Data Scientist": "Data Scientist role requiring Python, Pandas, NumPy, SQL, statistics, machine learning, model evaluation, data visualization, and communication skills. Must build predictive models, run experiments, and deliver business insights.",
+  "ML / AI Engineer": "ML / AI Engineer role requiring Python, PyTorch or TensorFlow, NLP or CV pipelines, MLOps, Docker, cloud services, and model serving APIs. Must train, evaluate, and deploy production machine learning systems.",
+  "DevOps / Cloud Engineer": "DevOps / Cloud Engineer role requiring AWS, Docker, Kubernetes, CI/CD, Terraform, Linux, monitoring, and incident response. Must automate deployments, maintain infrastructure reliability, and improve system observability.",
+  "Data Analyst": "Data Analyst role requiring SQL, Excel, Python, dashboarding (Power BI/Tableau), data cleaning, stakeholder communication, and KPI tracking. Must produce reports, identify trends, and support data-driven decisions.",
+};
+
 function JDPanel({ jd, setJD }) {
   const [tab, setTab] = useState("upload"); // "upload" | "choose" | "type"
   const [typed, setTyped] = useState("");
@@ -103,8 +114,9 @@ function JDPanel({ jd, setJD }) {
 
   const handleRoleSelect = (role) => {
     setSelectedRole(role);
-    // Create a text blob so parent can consume it like a file
-    const blob = new Blob([role], { type: "text/plain" });
+    const jdTemplate = ROLE_TEMPLATES[role] || `${role} role with responsibilities, required skills, and team collaboration requirements.`;
+    // Create a richer text blob so backend gets a full JD, not only the title.
+    const blob = new Blob([jdTemplate], { type: "text/plain" });
     const file = new File([blob], `${role.replace(/\s+/g, "_")}.txt`, { type: "text/plain" });
     setJD(file);
   };

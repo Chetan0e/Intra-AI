@@ -1,6 +1,7 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException, Form, Request
 from typing import Optional
 import io
+import re
 
 router = APIRouter()
 
@@ -55,7 +56,7 @@ def extract_text_from_docx(file_bytes: bytes) -> str:
         return ""
 
 def decode_file(filename: str, bytes: bytes) -> str:
-    ext = filename.lower().split('.')[-1]
+    ext = filename.lower().split('.')[-1] if filename and "." in filename else "txt"
     text = ""
     print(f"[Upload Debug] Processing: {filename} ({len(bytes)} bytes)")
     
@@ -64,19 +65,24 @@ def decode_file(filename: str, bytes: bytes) -> str:
     elif ext in ['doc', 'docx']:
         text = extract_text_from_docx(bytes)
     else:
-        try:
-            text = bytes.decode('utf-8')
-        except:
-            text = bytes.decode('latin-1', errors='replace')
+        # Try common text decoders to avoid garbled extraction.
+        for encoding in ("utf-8", "utf-16", "latin-1"):
+            try:
+                text = bytes.decode(encoding)
+                if text.strip():
+                    break
+            except Exception:
+                continue
     
     if not text.strip() or len(text.strip()) < 50:
         # Emergency fallback for failures — try raw string extraction
         print(f"[Upload Warning] Extraction too short ({len(text)} chars). Using fallback.")
         try:
             # Simple regex to get readable strings from binary
-            fallback = " ".join(re.findall(rb'[a-zA-Z]{3,}', bytes)).decode('ascii', errors='ignore')
+            chunks = re.findall(rb"[A-Za-z][A-Za-z0-9\-\+\#\./]{2,}", bytes)
+            fallback = " ".join(chunk.decode("ascii", errors="ignore") for chunk in chunks)
             return fallback[:10000]
-        except:
+        except Exception:
             pass
             
     return text.strip()

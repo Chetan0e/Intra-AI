@@ -5,6 +5,7 @@ from app.services.jd_parser import parse_jd
 from app.services.gap_analyzer import advanced_gap_analysis
 from app.services.path_generator import generate_advanced_path
 from app.services.reasoning_engine import advanced_reasoning
+from app.services.ai_engine import ai_engine
 
 router = APIRouter()
 
@@ -19,8 +20,20 @@ def full_analyze(data: AnalysisRequest):
 
     try:
         parsed_resume = parse_resume(data.resume)
-        skill_dna     = parsed_resume["skill_dna"]
-        jd_skills     = parse_jd(data.jd)
+        skill_dna = parsed_resume["skill_dna"]
+        jd_skills = parse_jd(data.jd)
+
+        # Fallback to AI engine when rule-based extraction is too sparse.
+        # This keeps responses different across distinct resumes/JDs.
+        if len(skill_dna) < 3:
+            ai_skill_dna = ai_engine.extract_skill_dna(data.resume)
+            if ai_skill_dna:
+                skill_dna = ai_skill_dna
+
+        if len(jd_skills) < 2:
+            ai_jd_skills = ai_engine.parse_job_description(data.jd)
+            if ai_jd_skills:
+                jd_skills = ai_jd_skills
 
         if not skill_dna and not jd_skills:
             raise HTTPException(
@@ -47,7 +60,8 @@ def full_analyze(data: AnalysisRequest):
                 "missing_skills":       gap_result["missing"],
                 "weak_skills":          gap_result["weak"],
                 "strong_count":         gap_result["strong_count"],
-                "job_readiness_label":  _readiness_label(gap_result["overall_score"])
+                "job_readiness_label":  _readiness_label(gap_result["overall_score"]),
+                "engine_mode":          _engine_mode(skill_dna, jd_skills),
             }
         }
     except HTTPException:
@@ -60,3 +74,12 @@ def _readiness_label(score: int) -> str:
     if score >= 60: return "Good Fit"
     if score >= 40: return "Partially Qualified"
     return "Significant Gap"
+
+def _engine_mode(skill_dna: dict, jd_skills: dict) -> str:
+    if not skill_dna and not jd_skills:
+        return "empty"
+    if ai_engine.is_initialized:
+        return "custom_model_or_hybrid"
+    if ai_engine.openai_available:
+        return "openai_or_rule_hybrid"
+    return "rule_based"

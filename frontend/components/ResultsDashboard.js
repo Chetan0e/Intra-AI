@@ -58,6 +58,9 @@ export default function ResultsDashboard({ data, onReset }) {
 
   const analysis = data.analysis || {};
   const readiness = analysis.job_readiness_label || "Analyzing...";
+  const matchedCount = analysis.matched_skills?.length || 0;
+  const missingCount = analysis.missing_skills?.length || 0;
+  const weakCount = analysis.weak_skills?.length || 0;
   
   const getReadinessStyles = (label) => {
     if (label === "Highly Qualified") return "text-emerald-600 bg-emerald-50 border-emerald-100";
@@ -105,6 +108,27 @@ export default function ResultsDashboard({ data, onReset }) {
             {analysis.years_experience}+ Years Professional Experience
           </div>
         )}
+        {analysis.engine_mode && (
+          <div className="px-4 py-2 rounded-xl bg-white border border-slate-200 flex items-center gap-2 text-[11px] font-bold text-slate-600">
+            <AlertCircle className="w-3.5 h-3.5 text-indigo-500" />
+            Engine: {analysis.engine_mode}
+          </div>
+        )}
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div className="bg-white rounded-2xl border border-slate-100 p-5">
+          <p className="text-[11px] uppercase tracking-widest text-slate-400 font-bold mb-2">Matched Skills</p>
+          <p className="text-2xl font-black text-emerald-600">{matchedCount}</p>
+        </div>
+        <div className="bg-white rounded-2xl border border-slate-100 p-5">
+          <p className="text-[11px] uppercase tracking-widest text-slate-400 font-bold mb-2">Missing Skills</p>
+          <p className="text-2xl font-black text-rose-600">{missingCount}</p>
+        </div>
+        <div className="bg-white rounded-2xl border border-slate-100 p-5">
+          <p className="text-[11px] uppercase tracking-widest text-slate-400 font-bold mb-2">Weak Skills</p>
+          <p className="text-2xl font-black text-amber-600">{weakCount}</p>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
