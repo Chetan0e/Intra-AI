@@ -1,68 +1,61 @@
-<div align="center">
+# Intra.ai
 
-# Intra AI
-### Adaptive Workforce Intelligence & Topological Upskilling Engine
+### Personalized AI Career Roadmap and Skill Gap Analyzer
 
-*Transforming static resumes and role benchmarks into deterministic, DAG-optimized career acceleration roadmaps.*
-
-[![Python](https://img.shields.io/badge/Python-3.9+-3776AB.svg?style=flat-square&logo=python&logoColor=white)](https://www.python.org)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688.svg?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
-[![Next.js](https://img.shields.io/badge/Next.js-14+-000000.svg?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org)
-[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4+-06B6D4.svg?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
-[![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED.svg?style=flat-square&logo=docker&logoColor=white)](https://www.docker.com)
-[![License](https://img.shields.io/badge/License-MIT-slate.svg?style=flat-square)](LICENSE)
-
-**Live Deployment:** [https://intra-ai.vercel.app/](https://intra-ai.vercel.app/)
+Intra.ai is an intelligent career acceleration platform that evaluates candidate resumes against real industry job requirements, identifies critical screening gaps, and generates a personalized, step-by-step learning roadmap.
 
 ---
 
-</div>
+## Overview
 
-## 📌 Executive Overview
+Traditional online courses and learning management systems rely on rigid, 200+ hour generic catalogs. They frequently re-teach skills candidates already command, miss the exact screening criteria hiring managers filter for, and present topics without prerequisite awareness.
 
-Traditional Learning Management Systems (LMS) and corporate training programs rely on static, 200+ hour one-size-fits-all course catalogs. They force candidates to re-study proficiencies they have commanded for years, fail to diagnose precise hiring dealbreakers, and lack awareness of foundational prerequisites.
-
-**Intra AI** solves this with a **deterministic workforce intelligence platform**. By pairing in-memory document parsing with Directed Acyclic Graph (DAG) pathfinding and Multi-Tier Skill DNA extraction, Intra AI isolates true screening dealbreakers and sequences a customized, prerequisite-ordered learning roadmap—cutting wasted study time by up to **45%**.
-
----
-
-## ⚡ Core Platform Capabilities
-
-- 🧬 **Multi-Tier Skill DNA Profiling**: Analyzes contextual project deliverables and execution depth across three dimensions: *Conceptual Understanding*, *Practical Application*, and *Real-World Production*.
-- ⚡ **Topological Prerequisite Graph (DAG)**: Solves dependency chains mathematically (e.g., ensuring asynchronous Python fundamentals are mastered prior to streaming API architectures).
-- 🎯 **Differential Gap Diagnostics**: Isolates mandatory 1st-round screening dealbreakers from secondary nice-to-haves against calibrated tech and social-sector role benchmarks.
-- 🔍 **Explainable AI (XAI)**: Generates explicit, transparent reasoning traces explaining exactly why each learning module was assigned, prioritized, or bypassed.
-- 🛡️ **Dual-Engine Resilient Architecture**: Uses an in-house trained predictive machine learning pipeline with automated fallback to LLM engines. **Zero downtime.**
-- 🔒 **100% In-Memory Privacy**: Resume and job descriptions are parsed volatilely in runtime memory. Zero persistent disk storage or model retraining on user data.
-- 🎨 **Modern Precision UI**: High-contrast bright-mode interface built with Next.js, TailwindCSS, and SSR-safe Recharts radar visualizations.
+Intra.ai addresses this with a deterministic, gap-focused approach:
+- Evaluates practical project deliverables and technical toolchains directly from resumes.
+- Benchmarks existing skills against target job specifications to isolate screening dealbreakers.
+- Uses Directed Acyclic Graph (DAG) dependency sequencing to order prerequisite topics logically.
+- Skips verified competencies automatically, reducing preparation time by up to 45%.
+- Operates entirely in memory, ensuring user resumes and job descriptions are never saved or sold.
 
 ---
 
-## 🏗️ System Architecture
+## Core Capabilities
+
+- **Contextual Skill Extraction**: Identifies technical proficiencies and depth from real project work rather than simple keyword matching.
+- **Differential Gap Analysis**: Distinguishes mandatory first-round screening dealbreakers from secondary or optional competencies.
+- **Topological Roadmap Sequencing**: Structures learning milestones logically by resolving prerequisite dependencies before advanced topics.
+- **Explainable Reasoning (XAI)**: Provides transparent rationale traces explaining why specific modules are prioritized or skipped.
+- **Single-Focus Guided Workflow**: A focused 3-step setup (Resume Upload, Target Role Selection, Review and Generation) that keeps the interface intuitive and clutter-free.
+- **Dedicated Application Dashboard**: A professional left-sidebar workspace organizing learning milestones, gap diagnostics, competency radar charts, and decision traces.
+- **In-Memory Privacy**: Documents are parsed in runtime memory during the session and are never written to disk or used for external model training.
+
+---
+
+## System Architecture
 
 ```mermaid
 flowchart TD
     subgraph Client ["Client Layer (Next.js 14)"]
-        UI["Landing & Live Interactive Preview"]
-        WS["Roadmap Workspace (Drag-and-Drop)"]
-        RD["Results Dashboard & XAI Dossier"]
+        UI["Landing Page"]
+        WS["Guided Roadmap Builder"]
+        RD["Sidebar Dossier Dashboard"]
     end
 
     subgraph Gateway ["API Gateway (FastAPI)"]
-        UP["/upload (In-Memory File Parsing)"]
-        AN["/analyze (Competency Synthesis)"]
+        UP["/upload (In-Memory Parsing)"]
+        AN["/analyze (Gap & Roadmap Synthesis)"]
     end
 
-    subgraph Engine ["Intelligence Pipeline"]
-        EXT["Contextual Skill DNA Extractor"]
+    subgraph Engine ["Analysis Engine"]
+        EXT["Contextual Skill Extractor"]
         GAP["Differential Gap Analyzer"]
-        DAG["Topological Graph Dependency Resolver"]
-        XAI["Explainable AI (XAI) Reasoning Engine"]
+        DAG["Topological Dependency Resolver"]
+        XAI["Reasoning & Explanation Engine"]
     end
 
     subgraph Intelligence ["Models & Fallbacks"]
-        ML["Custom Scikit-Learn Model"]
-        LLM["OpenAI LLM Integration Fallback"]
+        ML["Scikit-Learn Model Pipeline"]
+        LLM["LLM Fallback Engine"]
     end
 
     UI --> WS
@@ -80,53 +73,53 @@ flowchart TD
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 Intra-AI/
 ├── backend/
 │   ├── app/
-│   │   ├── main.py                     # FastAPI application entrypoint & CORS
+│   │   ├── main.py                     # FastAPI application entry point and CORS configuration
 │   │   ├── routes/
 │   │   │   ├── analysis.py             # /analyze endpoint orchestration
 │   │   │   ├── roadmap.py              # Dynamic DAG roadmap generation
-│   │   │   ├── training.py             # Model training & fine-tuning endpoints
-│   │   │   ├── upload.py               # In-memory PDF, DOCX, TXT document parser
+│   │   │   ├── training.py             # Model training and fine-tuning endpoints
+│   │   │   ├── upload.py               # In-memory PDF, DOCX, and TXT document parser
 │   │   │   └── upload_fallback.py      # Resilient upload fallback handler
 │   │   ├── services/
 │   │   │   ├── ai_engine.py            # Primary AI extraction engine
-│   │   │   ├── custom_model.py         # In-house ML model evaluation
+│   │   │   ├── custom_model.py         # Local ML model evaluation
 │   │   │   ├── dependency_resolver.py  # Topological DAG prerequisite graph
 │   │   │   ├── gap_analyzer.py         # Differential competency delta calculator
 │   │   │   ├── reasoning_engine.py     # Explainable AI (XAI) audit traces
-│   │   │   └── resume_parser.py        # Text & structural token extraction
+│   │   │   └── resume_parser.py        # Structural text and token extraction
 │   │   └── utils/
 │   │       ├── course_catalog.json     # Curated practical deliverables catalog
 │   │       └── skill_map.json          # Prerequisite dependency map
-│   ├── Dockerfile                      # Production container spec
+│   ├── Dockerfile                      # Production container specification
 │   └── requirements.txt                # Python backend dependencies
 │
 ├── frontend/
 │   ├── components/
-│   │   ├── BrandLogo.js                # Minimalist Swiss-precision logomark
-│   │   ├── CinematicHero.js            # Bright-mode hero with generated visual
-│   │   ├── SimpleHowItWorks.js         # 3-step clean methodology breakdown
-│   │   ├── InteractivePreview.js       # Live hands-on interactive role demo
-│   │   ├── FeaturesGridSection.js      # 6-card architectural Bento grid
-│   │   ├── ComparisonSection.js        # Traditional LMS vs Intra AI matrix
-│   │   ├── ClosingJourneySection.js    # Sunrise horizon visual & colophon footer
-│   │   ├── WorkspaceApp.js             # Linear-grade drag-and-drop workspace
-│   │   ├── ResultsDashboard.js         # Full evaluation dossier & milestone tracker
+│   │   ├── BrandLogo.js                # Minimalist geometric brand mark
+│   │   ├── CinematicHero.js            # Clear, benefit-driven hero section
+│   │   ├── SimpleHowItWorks.js         # Three-step methodology breakdown
+│   │   ├── InteractivePreview.js       # Interactive role preview explorer
+│   │   ├── FeaturesGridSection.js      # Core architectural capabilities grid
+│   │   ├── ComparisonSection.js        # Traditional LMS vs. Intra.ai comparison matrix
+│   │   ├── ClosingJourneySection.js    # Bottom call to action and footer
+│   │   ├── WorkspaceApp.js             # Three-step guided roadmap builder
+│   │   ├── ResultsDashboard.js         # Left-sidebar results dossier and milestone tracker
 │   │   ├── SkillRadar.js               # Multi-axial Recharts radar chart
-│   │   └── ThemeProvider.js            # Light-mode design token context
+│   │   └── ThemeProvider.js            # Design system context
 │   ├── pages/
 │   │   ├── _app.js                     # Global styling wrapper
-│   │   ├── _document.js                # HTML head & typography configuration
-│   │   └── index.js                    # Dynamic root controller (Landing / Workspace / Results)
+│   │   ├── _document.js                # HTML head and typography configuration
+│   │   └── index.js                    # Root view controller (Landing, Workspace, Results)
 │   ├── public/
-│   │   └── assets/                     # Curated assets (Hero & Horizon visuals)
+│   │   └── assets/                     # Graphic assets
 │   ├── styles/
-│   │   └── globals.css                 # Pure bright-mode design tokens
+│   │   └── globals.css                 # Global CSS and Tailwind directives
 │   ├── tailwind.config.js              # TailwindCSS configuration
 │   └── package.json                    # Frontend dependencies
 │
@@ -135,92 +128,104 @@ Intra-AI/
 
 ---
 
-## 🚀 Local Development Setup
+## Local Development Setup
 
-### Prerequisites
-- **Python**: 3.9 or higher
-- **Node.js**: 18.x or 20.x
-- **npm** or **yarn**
+### System Requirements
+- Python 3.9 or higher
+- Node.js 18.x or 20.x
+- npm or yarn
 
 ---
 
 ### 1. Backend Service (FastAPI)
 
-```bash
-# 1. Navigate to the backend directory
-cd backend
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
 
-# 2. Create and activate a virtual environment
-# Windows (PowerShell)
-python -m venv venv
-.\venv\Scripts\Activate.ps1
+2. Create and activate a virtual environment:
+   - On Windows (PowerShell):
+     ```powershell
+     python -m venv venv
+     .\venv\Scripts\Activate.ps1
+     ```
+   - On macOS or Linux:
+     ```bash
+     python3 -m venv venv
+     source venv/bin/activate
+     ```
 
-# macOS / Linux
-python3 -m venv venv
-source venv/bin/activate
+3. Install required Python packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-# 3. Install dependencies
-pip install -r requirements.txt
+4. Optional configuration:
+   Create a `.env` file in `backend/` if you wish to configure an `OPENAI_API_KEY`. If omitted, the platform automatically utilizes its local model and dataset fallbacks.
 
-# 4. Optional: Configure environment variables
-# Copy .env.example to .env and configure your OPENAI_API_KEY if desired.
-# (If omitted, the platform automatically utilizes local dataset fallbacks.)
+5. Start the backend development server:
+   ```bash
+   python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+   ```
 
-# 5. Start the FastAPI development server
-python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-```
-
-The backend API will be available at **`http://localhost:8000`**.  
-Interactive Swagger API documentation: **`http://localhost:8000/docs`**.
+   The backend service will be available at `http://localhost:8000`.  
+   Interactive API documentation (Swagger UI) is available at `http://localhost:8000/docs`.
 
 ---
 
 ### 2. Frontend Application (Next.js)
 
-Open a new terminal session:
+Open a separate terminal window:
 
-```bash
-# 1. Navigate to the frontend directory
-cd frontend
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
 
-# 2. Install dependencies
-npm install
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-# 3. Start the Next.js development server
-npm run dev
-```
+3. Start the Next.js development server:
+   ```bash
+   npm run dev
+   ```
 
-Open your browser to **`http://localhost:3000`** to access the application.
+4. Open `http://localhost:3000` in your browser.
 
 ---
 
-## 🔌 API Reference
+## API Reference
 
-### `POST /upload`
-Uploads candidate resume and job description documents for in-memory text parsing.
+### POST /upload
+Parses resume and job description documents in memory and extracts text.
+
 - **Content-Type**: `multipart/form-data`
-- **Fields**:
+- **Request Body**:
   - `resume`: Binary file (`.pdf`, `.docx`, `.txt`)
   - `jd`: Binary file or pre-calibrated text (`.pdf`, `.docx`, `.txt`)
 - **Response**:
   ```json
   {
-    "resume": "Extracted candidate text...",
-    "jd": "Extracted target role text..."
+    "resume": "Extracted resume text content...",
+    "jd": "Extracted job description text content..."
   }
   ```
 
-### `POST /analyze`
-Performs end-to-end skill DNA extraction, differential gap diagnosis, and DAG roadmap sequencing.
+### POST /analyze
+Executes competency profiling, gap diagnosis, and prerequisite roadmap sequencing.
+
 - **Content-Type**: `application/json`
-- **Payload**:
+- **Request Body**:
   ```json
   {
     "resume": "Candidate resume text...",
     "jd": "Target job description text..."
   }
   ```
-- **Response**:
+- **Response Structure**:
   ```json
   {
     "overall_score": 82.5,
@@ -260,9 +265,9 @@ Performs end-to-end skill DNA extraction, differential gap diagnosis, and DAG ro
 
 ---
 
-## 🐳 Docker Deployment
+## Docker Deployment
 
-To build and run the backend microservice inside an isolated container:
+To build and run the backend inside a container:
 
 ```bash
 cd backend
@@ -272,18 +277,18 @@ docker run -p 8000:8000 intra-ai-engine
 
 ---
 
-## 📊 Performance Benchmarks
+## Performance Comparison
 
-| Metric | Industry Average (Generic LMS) | Intra AI Adaptive Engine |
+| Metric | Traditional Courses / Generic LMS | Intra.ai Adaptive Engine |
 | :--- | :--- | :--- |
-| **Preparation Time to Day-One Readiness** | 6–9 Months | **2.5–4 Months (~45% Reduction)** |
-| **Skill Profiling Precision** | ~60% (Keyword Counting) | **92% (Multi-Tier DNA Context)** |
-| **Redundant Training Churn** | > 40 Hours | **0 Hours (Auto-Bypassed)** |
-| **Dependency Sequencing** | Linear Playlists | **Directed Acyclic Graph (DAG)** |
-| **Data Privacy Policy** | Stored on Server DB | **100% In-Memory Runtime** |
+| **Time to Job Readiness** | 6 to 9 Months | **2.5 to 4 Months (~45% time saved)** |
+| **Skill Profiling Depth** | Surface keyword counts | **Multi-tier contextual project evaluation** |
+| **Redundant Training** | Forces study of mastered basics | **Zero redundant study (automatically skipped)** |
+| **Sequencing Method** | Linear playlist | **Directed Acyclic Graph (prerequisites first)** |
+| **Data Retention** | Stored on persistent databases | **100% in-memory runtime processing** |
 
 ---
 
-## 📄 License
+## License
 
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
