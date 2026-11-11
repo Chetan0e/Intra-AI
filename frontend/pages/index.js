@@ -1,31 +1,37 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { AnimatePresence, motion } from "framer-motion";
 import Head from "next/head";
 
 import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import UploadSection from "@/components/UploadSection";
-import FeaturesSection from "@/components/FeaturesSection";
-import HowItWorksSection from "@/components/HowItWorksSection";
-import DashboardPreviewSection from "@/components/DashboardPreviewSection";
-import SocialImpactSection from "@/components/SocialImpactSection";
+import CinematicHero from "@/components/CinematicHero";
+import SimpleHowItWorks from "@/components/SimpleHowItWorks";
+import InteractivePreview from "@/components/InteractivePreview";
+import FeaturesGridSection from "@/components/FeaturesGridSection";
+import ComparisonSection from "@/components/ComparisonSection";
+import ClosingJourneySection from "@/components/ClosingJourneySection";
+import WorkspaceApp from "@/components/WorkspaceApp";
 import ResultsDashboard from "@/components/ResultsDashboard";
 
 export default function Home() {
+  const [view, setView] = useState("landing"); // "landing" | "workspace" | "results"
   const [resume, setResume] = useState(null);
   const [jd, setJD] = useState(null);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
-  const uploadRef = useRef(null);
 
-  const scrollToUpload = () => {
-    uploadRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  const startWorkspace = () => {
+    setView("workspace");
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleUpload = async () => {
+  const backToHome = () => {
+    setView("landing");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleUploadAndAnalyze = async () => {
     if (!resume || !jd) {
-      alert("Please upload both your Resume and Job Description!");
+      alert("Please provide both your Resume and Target Job Description!");
       return;
     }
     setLoading(true);
@@ -33,7 +39,7 @@ export default function Home() {
     try {
       const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
-      // Step 1 — Upload (handles PDF, DOCX, TXT)
+      // Step 1 — Upload files
       const formData = new FormData();
       formData.append("resume", resume);
       formData.append("jd", jd);
@@ -49,7 +55,7 @@ export default function Home() {
         return;
       }
 
-      // Step 2 — Unified analysis (skills + gap + roadmap + reasoning)
+      // Step 2 — Unified analysis
       const analysisRes = await axios.post(`${API_URL}/analyze`, {
         resume: resumeText,
         jd: jdText,
@@ -67,7 +73,7 @@ export default function Home() {
         analysis:      d.analysis      || {},
       });
 
-      // Scroll to top to show results
+      setView("results");
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (err) {
       console.error("[Upload/Analyze Error]", err);
@@ -81,80 +87,71 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Intra AI — Adaptive Workforce Intelligence</title>
+        <title>Intra AI — Personalized AI Career Roadmap &amp; Skill Gap Analyzer</title>
         <meta
           name="description"
-          content="Intra AI analyzes your resume and job description to generate a personalized adaptive learning roadmap. Bridge the gap between where you are and where you need to be."
+          content="Upload your resume and target role to get an instant, personalized learning roadmap. Find out what skills you're missing and get hired faster."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content="Intra AI — From Within to Workforce" />
-        <meta property="og:description" content="Your personalized adaptive learning roadmap, powered by skill intelligence." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-emerald-500/30 selection:text-white relative">
+      <div className="min-h-screen bg-white text-slate-900 selection:bg-teal-100 selection:text-teal-900">
+        
+        {/* Navigation is active across landing */}
+        {view === "landing" && (
+          <Navbar onGetStarted={startWorkspace} />
+        )}
 
-        {/* Soft gradient background blobs */}
-        <div className="blob-tl" />
-        <div className="blob-br" />
-        <div className="blob-center" />
+        <main>
+          {view === "landing" && (
+            <>
+              {/* SECTION 01: HERO (Modern bright mode with generated high-end image) */}
+              <CinematicHero onGetStarted={startWorkspace} />
 
-        {/* Sticky Navbar */}
-        <Navbar onGetStarted={scrollToUpload} />
+              {/* SECTION 02: METHODOLOGY / HOW IT WORKS (Clean 3-step architecture) */}
+              <SimpleHowItWorks onGetStarted={startWorkspace} />
 
-        <div className="relative z-10">
-          <AnimatePresence mode="wait">
-            {!data ? (
-              <motion.div
-                key="landing"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                {/* 1. Hero Section */}
-                <HeroSection onGetStarted={scrollToUpload} />
+              {/* SECTION 03: INTERACTIVE DEMO / LIVE PREVIEW (Hands-on exploration) */}
+              <InteractivePreview onGetStarted={startWorkspace} />
 
-                {/* 2. Upload Section */}
-                <div ref={uploadRef}>
-                  <UploadSection
-                    resume={resume}
-                    jd={jd}
-                    setResume={setResume}
-                    setJD={setJD}
-                    onGenerate={handleUpload}
-                    loading={loading}
-                  />
-                </div>
+              {/* SECTION 04: CORE ARCHITECTURE & FEATURES (Bento Grid) */}
+              <FeaturesGridSection onGetStarted={startWorkspace} />
 
-                {/* 3. Features Section */}
-                <FeaturesSection />
+              {/* SECTION 05: WHY INTRA AI / COMPARISON MATRIX */}
+              <ComparisonSection onGetStarted={startWorkspace} />
 
-                {/* 4. How It Works */}
-                <HowItWorksSection />
+              {/* SECTION 06: CLOSING CHAPTER & FOOTER (Keeps footer image) */}
+              <ClosingJourneySection onGetStarted={startWorkspace} />
+            </>
+          )}
 
-                {/* 5. Dashboard Preview */}
-                <DashboardPreviewSection />
+          {view === "workspace" && (
+            <WorkspaceApp
+              resume={resume}
+              jd={jd}
+              setResume={setResume}
+              setJD={setJD}
+              onGenerate={handleUploadAndAnalyze}
+              loading={loading}
+              onBackToHome={backToHome}
+            />
+          )}
 
-                {/* 6. Social Impact */}
-                <SocialImpactSection />
+          {view === "results" && (
+            <ResultsDashboard
+              data={data}
+              onBackToHome={backToHome}
+              onReset={() => {
+                setData(null);
+                setResume(null);
+                setJD(null);
+                setView("workspace");
+              }}
+            />
+          )}
+        </main>
 
-
-              </motion.div>
-            ) : (
-              <motion.div
-                key="results"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="pt-28"
-              >
-                <ResultsDashboard data={data} onReset={() => { setData(null); setResume(null); setJD(null); }} />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
       </div>
     </>
   );

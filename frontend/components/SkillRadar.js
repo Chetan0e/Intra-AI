@@ -10,22 +10,29 @@ import {
 } from 'recharts';
 
 export default function SkillRadar({ data }) {
+  const gridStroke = "#E2E8F0";
+  const tickFill = "#475569";
+  const tooltipBg = "#FFFFFF";
+  const tooltipBorder = "#CBD5E1";
+  const tooltipText = "#0F172A";
+  const accentColor = "#0D9488";
+
   // If data is insufficient for a Radar chart, render a clean bar fallback
   if (!data || Object.keys(data).length < 3) {
     const entries = Object.entries(data || {}).slice(0, 6);
     return (
-      <div className="w-full space-y-4 py-4 px-2">
+      <div className="w-full space-y-3 py-2">
         {entries.map(([skill, dna]) => {
           const avg = Math.round((dna.conceptual + dna.practical + dna.real_world) / 3);
           return (
-            <div key={skill} className="group">
-              <div className="flex justify-between text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5 group-hover:text-indigo-500 transition-colors">
-                <span>{skill}</span>
-                <span>{avg}% Match</span>
+            <div key={skill} className="space-y-1.5">
+              <div className="flex justify-between text-xs text-slate-600">
+                <span className="font-semibold text-slate-900">{skill}</span>
+                <span className="font-mono font-medium text-teal-600">{avg}%</span>
               </div>
-              <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden shadow-inner">
+              <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
                 <div 
-                  className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transition-all duration-1000 ease-out" 
+                  className="h-full bg-teal-600 rounded-full transition-all duration-700 ease-out" 
                   style={{ width: `${avg}%` }} 
                 />
               </div>
@@ -33,8 +40,8 @@ export default function SkillRadar({ data }) {
           );
         })}
         {entries.length === 0 && (
-          <div className="text-center py-10 text-slate-400 text-xs italic">
-            Insufficient DNA data for visualization
+          <div className="text-center py-8 text-slate-400 text-xs italic">
+            Insufficient competency data for radar visualization
           </div>
         )}
       </div>
@@ -43,19 +50,19 @@ export default function SkillRadar({ data }) {
 
   // Transform data for Recharts
   const chartData = Object.keys(data).map(skill => ({
-    skill: skill.length > 12 ? skill.slice(0, 10) + '..' : skill,
+    skill: skill.length > 14 ? skill.slice(0, 12) + '..' : skill,
     score: Math.round((data[skill].conceptual + data[skill].practical + data[skill].real_world) / 3),
     fullMark: 100,
   })).sort((a, b) => b.score - a.score).slice(0, 8);
 
   return (
-    <div className="w-full h-72 -ml-2">
+    <div className="w-full h-64 -ml-1">
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart cx="50%" cy="50%" outerRadius="80%" data={chartData}>
-          <PolarGrid stroke="#e2e8f0" strokeDasharray="3 3" />
+        <RadarChart cx="50%" cy="50%" outerRadius="75%" data={chartData}>
+          <PolarGrid stroke={gridStroke} strokeDasharray="3 3" />
           <PolarAngleAxis 
             dataKey="skill" 
-            tick={{ fill: "#94a3b8", fontSize: 10, fontWeight: 600 }} 
+            tick={{ fill: tickFill, fontSize: 11, fontWeight: 500 }} 
           />
           <PolarRadiusAxis 
             angle={30} 
@@ -65,20 +72,23 @@ export default function SkillRadar({ data }) {
           />
           <Tooltip 
             contentStyle={{ 
-              borderRadius: '16px', 
-              border: 'none', 
-              boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)',
+              backgroundColor: tooltipBg,
+              borderRadius: '10px', 
+              border: `1px solid ${tooltipBorder}`, 
+              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.08)',
               fontSize: '12px',
-              fontWeight: '600'
+              fontWeight: '500',
+              color: tooltipText
             }} 
+            itemStyle={{ color: accentColor }}
           />
           <Radar
-            name="Skill Proficiency"
+            name="Proficiency"
             dataKey="score"
-            stroke="#6366f1"
-            fill="#6366f1"
-            fillOpacity={0.15}
-            strokeWidth={3}
+            stroke={accentColor}
+            fill={accentColor}
+            fillOpacity={0.2}
+            strokeWidth={2}
           />
         </RadarChart>
       </ResponsiveContainer>
